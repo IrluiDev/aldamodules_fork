@@ -1,0 +1,219 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pms_door_codes
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-27 11:46+0000\n"
+"PO-Revision-Date: 2021-09-27 11:46+0000\n"
+"Last-Translator: Jose Luis Algara\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pms_door_codes
+#: code:addons/pms_door_codes/models/pms_reservation.py:0
+#: code:addons/pms_door_codes/models/pms_reservation.py:0
+#, python-format
+msgid " to:"
+msgstr " a: "
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_property__seed_code
+msgid "4 digit Seed Code"
+msgstr "Código semilla de 4 dígitos"
+
+#. module: pms_door_codes
+#: model_terms:ir.ui.view,arch_db:pms_door_codes.hotel_door_code_view
+msgid ""
+"<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" "
+"title=\"Arrow\"/>"
+msgstr ""
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_reservation__box_code
+msgid "Box code"
+msgstr "Código de caja"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_reservation__box_number
+msgid "Box number"
+msgstr "Número de caja"
+
+#. module: pms_door_codes
+#: model:ir.model.fields.selection,name:pms_door_codes.selection__pms_property__code_period__1
+msgid "Change Diary"
+msgstr "Cambio diario"
+
+#. module: pms_door_codes
+#: model:ir.model.fields.selection,name:pms_door_codes.selection__pms_property__code_period__7
+msgid "Change Monday"
+msgstr "Cambio el lunes"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_property__chararters_postcode
+msgid "Characters after the code"
+msgstr "Caracteres después del código"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_property__chararters_precode
+msgid "Characters before the door code"
+msgstr "Caracteres antes del código"
+
+#. module: pms_door_codes
+#: model:ir.model,name:pms_door_codes.model_door_code
+msgid "Check the door codes"
+msgstr "Check códigos de puerta"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code__create_uid
+msgid "Created by"
+msgstr "Credo por"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code__display_name
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_property__display_name
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_reservation__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: pms_door_codes
+#: model_terms:ir.ui.view,arch_db:pms_door_codes.view_property_form_door_code
+msgid "Door Code"
+msgstr "Código de puerta"
+
+#. module: pms_door_codes
+#: model:ir.actions.act_window,name:pms_door_codes.action_door_code_act
+#: model_terms:ir.ui.view,arch_db:pms_door_codes.hotel_door_code_view
+msgid "Door Code Generator"
+msgstr "Generador de códigos de puerta"
+
+#. module: pms_door_codes
+#: model:ir.ui.menu,name:pms_door_codes.menu_hotel_door_code
+msgid "Door Codes"
+msgstr "Códigos de puerta"
+
+#. module: pms_door_codes
+#: model_terms:ir.ui.view,arch_db:pms_door_codes.view_property_form_door_code
+msgid "Door code settings"
+msgstr "Configuración de los códigos de puerta"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code__door_code
+msgid "Door codes"
+msgstr "Códigos de puerta"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code__date_end
+msgid "End of period"
+msgstr "Final del periodo"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_reservation__door_codes
+#: model_terms:ir.ui.view,arch_db:pms_door_codes.pms_reservation_door_codes_form
+msgid "Entry Codes"
+msgstr "Códigos de entrada"
+
+#. module: pms_door_codes
+#: code:addons/pms_door_codes/models/pms_reservation.py:0
+#: code:addons/pms_door_codes/models/pms_reservation.py:0
+#, python-format
+msgid "Entry code: "
+msgstr "Códigos de entrada: "
+
+#. module: pms_door_codes
+#: model_terms:ir.ui.view,arch_db:pms_door_codes.hotel_door_code_view
+msgid "Generate Code"
+msgstr "Generar codigo"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code__id
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_property__id
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_reservation__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: pms_door_codes
+#: code:addons/pms_door_codes/models/pms_reservation.py:0
+#, python-format
+msgid "It will change on "
+msgstr "Cambiara el "
+
+#. module: pms_door_codes
+#: code:addons/pms_door_codes/models/pms_reservation.py:0
+#, python-format
+msgid "It will change on monday "
+msgstr "Cambiara el lunes "
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code____last_update
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_property____last_update
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_reservation____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: pms_door_codes
+#: model:ir.model.fields,help:pms_door_codes.field_pms_property__seed_code
+msgid "Must be between 0 and 9999"
+msgstr "Tiene que estar entre 0 y 9999"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_pms_property__code_period
+msgid "Period of code change"
+msgstr "Periodo de cambio de códigos"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code__pms_property_ids
+msgid "Properties"
+msgstr "Propiedades"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,help:pms_door_codes.field_door_code__pms_property_ids
+msgid ""
+"Properties with access to the element; if not set, all properties can access"
+msgstr ""
+
+#. module: pms_door_codes
+#: model:ir.model,name:pms_door_codes.model_pms_property
+msgid "Property"
+msgstr "Hotel"
+
+#. module: pms_door_codes
+#: model:ir.model,name:pms_door_codes.model_pms_reservation
+msgid "Reservation"
+msgstr "Reserva"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,help:pms_door_codes.field_pms_property__code_period
+msgid "Select a valid period type"
+msgstr "Seleccione un periodo valido"
+
+#. module: pms_door_codes
+#: model:ir.model.fields,field_description:pms_door_codes.field_door_code__date_start
+msgid "Start of the period"
+msgstr "Inicio del periodo"
+
+#. module: pms_door_codes
+#: code:addons/pms_door_codes/models/pms_property.py:0
+#, python-format
+msgid "The seed for the code must be between 0 and 9999"
+msgstr "El código semilla tiene que estar entre 0 y 9999"
