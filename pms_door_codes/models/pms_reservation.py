@@ -28,9 +28,9 @@ class InheritPmsReservation(models.Model):
         )
         code = float(date.strftime("%s.%%06d") % date.microsecond) + delay
         return (
-            pms_property_id.chararters_precode
-            + repr(code)[4:8]
-            + pms_property_id.chararters_postcode
+            pms_property_id.chararters_precode or ''
+            + repr(code)[4:8] or ''
+            + pms_property_id.chararters_postcode or ''
         )
 
     def door_codes_text(self, entry, exit, pms_property_id=False):
