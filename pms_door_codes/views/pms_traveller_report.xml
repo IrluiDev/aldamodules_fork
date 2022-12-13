@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="inherit_traveller_report" inherit_id="pms.traveller_report">
+        <xpath expr="//div[@class='final']" position="inside">
+            <span t-field="docs.reservation_id.door_codes" />
+        </xpath>
+    </template>
+</odoo>

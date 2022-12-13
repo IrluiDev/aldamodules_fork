@@ -1,7 +1,7 @@
 ##############################################################################
 #
 #    Odoo, Open Source Management Solution
-#    Copyright (C) 2018-2021 Jose Luis Algara Toledo <osotranquilo@gmail.com>
+#    Copyright (C) 2018-2022 Jose Luis Algara Toledo <osotranquilo@gmail.com>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 
 {
     "name": "PMS Hotel Door Codes",
-    "version": "14.0.1.0.1",
+    "version": "14.0.1.0.2",
     "author": "Jose Luis Algara Toledo <osotranquilo@gmail.com>,"
     "Odoo Community Association (OCA)",
     "license": "AGPL-3",
@@ -36,6 +36,7 @@
         "wizard/door_code.xml",
         "views/pms_reservation.xml",
         "views/pms_property_views.xml",
+        "views/pms_traveller_report.xml",
         "security/ir.model.access.csv",
     ],
     "qweb": [],
