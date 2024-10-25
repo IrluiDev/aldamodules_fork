@@ -1,8 +1,9 @@
 ##############################################################################
 #
-#    ODOO, Open Source Management Solution
-#    Copyright (C) 2018-2021 Jose Luis Algara Toledo <osotranquilo@gmail.com>
-#
+#    Odoo, Open Source Management Solution
+#    Copyright (C) 2018-2024 Jose Luis Algara Toledo <osotranquilo@gmail.com>
+#                  2024 Irlui Ramírez <irlui@aldahotels.com>
+#                  Consultores hoteleros integrales - Alda Hotels
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
