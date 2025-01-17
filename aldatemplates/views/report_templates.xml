@@ -2,7 +2,7 @@
 <odoo>
     <template
         id="external_layout_background_footer_font_size"
-        inherit_id="web.external_layout_background"
+        inherit_id="web.external_layout_striped"
     >
         <xpath
             expr="//div[@t-field='company.report_footer']/../.."
@@ -16,7 +16,10 @@
         id="external_layout_standard_footer_font_size"
         inherit_id="web.external_layout_standard"
     >
-        <xpath expr="//div[@name='financial_infos']/../.." position="attributes">
+        <xpath
+            expr="//div[@t-field='company.report_footer']/../.."
+            position="attributes"
+        >
             <attribute name="style">font-size: 9px;</attribute>
         </xpath>
     </template>
