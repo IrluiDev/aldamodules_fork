@@ -42,7 +42,6 @@
         "views/account_payment_views.xml",
         "views/report_templates.xml",
         "views/account_payment_register_views.xml",
-        "views/template_header_footer_alda.xml",
     ],
     "installable": True,
 }

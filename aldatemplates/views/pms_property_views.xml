@@ -25,6 +25,8 @@
                         name="text_image2"
                         attrs="{'invisible':[('image2','=',False)]}"
                     />
+                    <field name="property_service_information" />
+                    <field name="property_web_url" />
                 </group>
             </xpath>
             <xpath expr="//field[@name='mail_information']" position="attributes">
