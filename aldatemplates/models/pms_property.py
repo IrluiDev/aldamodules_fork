@@ -15,3 +15,6 @@ class PmsProperty(models.Model):
     is_exit_auto_mail = fields.Boolean(string="Auto send mail")
     property_service_information = fields.Html(string="About Alda Services")
     property_web_url = fields.Char(string="Link to Alda property information")
+    aditional_room_information = fields.Html(
+        string="Additional information about the room"
+    )
