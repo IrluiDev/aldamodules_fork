@@ -1,0 +1,414 @@
+<odoo>
+    <template id="portal_my_home_menu_purchase_request" name="Portal layout : purchase_request menu entries" inherit_id="portal.portal_breadcrumbs" priority="30">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'purchase_request'" t-attf-class="breadcrumb-item #{'active ' if not purchase_request else ''}">
+                <a t-if="purchase_request" t-attf-href="/my/purchase_requests?{{ keep_query() }}">Purchase requests</a>
+                <t t-else="">Purchase requests</t>
+            </li>
+            <li t-if="purchase_request" class="breadcrumb-item active">
+                <t t-esc="purchase_request.name" t-if="purchase_request.name != '/'"/>
+                <t t-else=""><em>Draft purchase request</em></t>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_purchase_request" name="Show purchase requests" inherit_id="portal.portal_my_home" customize_show="True" priority="30">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Purchase requests</t>
+                <t t-set="url" t-value="'/my/purchase_requests'"/>
+                <t t-set="placeholder_count" t-value="'purchase_request_count'"/>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Products</t>
+                <t t-set="url" t-value="'/my/product_list'"/>
+                <t t-set="placeholder_count" t-value="'product_product_count'"/>
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="after">
+            <a class="btn btn-radius btn-primary btn-pms_pwa mt-4" t-attf-href="/my/new_purchase_request?{{ keep_query() }}">New purchase request</a>
+        </xpath>
+    </template>
+
+    <template id="portal_my_purchase_requests" name="My purchase_requests and Payments">
+      <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+        <t t-call="portal.portal_searchbar">
+            <t t-set="title">purchase_requests</t>
+        </t>
+        <t t-if="not purchase_requests">
+            <p>There are currently no purchase_requests and payments for your account.</p>
+        </t>
+        <t t-if="purchase_requests" t-call="portal.portal_table">
+            <thead>
+                <tr class="active">
+                    <th>Purchase request #</th>
+                    <th>Date</th>
+                    <th/>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="purchase_requests" t-as="purchase_request">
+                    <tr>
+                        <td>
+                            <a t-att-href="purchase_request.get_portal_url()">
+                                <t t-esc="purchase_request.name" t-if="purchase_request.name != '/'"/>
+                                <em t-else="">Draft purchase request</em>
+                            </a>
+                        </td>
+                        <td><span t-field="purchase_request.date_start"/></td>
+                        <td class="tx_status">
+                            <t t-if="purchase_request.state == 'draft'">
+                                <span class="badge rounded-pill text-bg-info"><i class="fa fa-fw fa-clock-o" aria-label="Draft" title="Draft" role="img"></i><span class="d-none d-md-inline"> Draft</span></span>
+                            </t>
+                            <t t-if="purchase_request.state == 'to_approve'">
+                                <span class="badge rounded-pill text-bg-secondary"><i class="fa fa-fw fa-check" aria-label="To approve" title="To approve" role="img"></i><span class="d-none d-md-inline"> To approve</span></span>
+                            </t>
+                            <t t-if="purchase_request.state == 'approved'">
+                                <span class="badge rounded-pill text-bg-secondary"><i class="fa fa-fw fa-check" aria-label="Approved" title="Approved" role="img"></i><span class="d-none d-md-inline"> Approved</span></span>
+                            </t>
+                            <t t-if="purchase_request.state == 'in_progress'">
+                                <span class="badge rounded-pill text-bg-primary"><i class="fa fa-fw fa-check" aria-label="In Progress" title="In Progress" role="img"></i><span class="d-none d-md-inline"> In Progress</span></span>
+                            </t>
+                            <t t-if="purchase_request.state == 'done'">
+                                <span class="badge rounded-pill text-bg-success"><i class="fa fa-fw fa-check" aria-label="Done" title="Done" role="img"></i><span class="d-none d-md-inline"> Done</span></span>
+                            </t>
+                            <t t-if="purchase_request.state == 'rejected'">
+                                <span class="badge rounded-pill text-bg-warning"><i class="fa fa-fw fa-remove" aria-label="Rejected" title="Rejected" role="img"></i><span class="d-none d-md-inline"> Rejected</span></span>
+                            </t>
+                        </td>
+                    </tr>
+                </t>
+            </tbody>
+        </t>
+      </t>
+    </template>
+
+    <template id="portal_purchase_request_page" name="purchase_request Portal Template" inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="before">
+            <div t-if="purchase_request and purchase_request.review_ids">
+                <t t-foreach="purchase_request.review_ids" t-as="review">
+                    <div t-att-class="'alert alert-warning' if review.status == 'pending' else 'alert alert-danger' if review.status == 'rejected' else 'alert alert-success' if review.status == 'approved' else 'alert alert-info'">
+                        <p><b>Status:</b> <span t-field="review.status"/>. <span t-if="review.status != 'pending'"><b>Reviewer:</b> <span t-field="review.done_by"/>. <b>Reviewed date:</b> <span t-field="review.reviewed_date"/>.</span></p>
+                        <p t-if="review.has_comment"><b>Comment:</b> <span t-field="review.comment"/></p>
+                    </div>
+                </t>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <div class="row mt16 o_portal_purchase_request_sidebar">
+                <!-- Sidebar -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+                    <t t-set="title">
+                        <h2 class="mb-0">
+                            <b t-field="purchase_request.display_name"/>
+                        </h2>
+                    </t>
+
+                    <t t-set="entries">
+                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                            <li t-if="purchase_request.requested_by" class="list-group-item flex-grow-1">
+                                <div class="small mb-1"><strong class="text-muted">
+                                    Requested by
+                                </strong></div>
+                                <div class="row">
+                                    <div class="col flex-grow-0 pr-2">
+                                        <img t-if="purchase_request.requested_by.image_1024" class="rounded-circle mt-1 o_portal_contact_img" t-att-src="image_data_uri(purchase_request.requested_by.image_1024)" alt="Contact"/>
+                                        <img t-else="" class="rounded-circle mt-1 o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li t-if="purchase_request.assigned_to" class="list-group-item flex-grow-1">
+                                <div class="small mb-1"><strong class="text-muted">
+                                    Assigned to
+                                </strong></div>
+                                <div class="row">
+                                    <div class="col flex-grow-0 pr-2">
+                                        <img t-if="purchase_request.assigned_to.image_1024" class="rounded-circle mt-1 o_portal_contact_img" t-att-src="image_data_uri(purchase_request.assigned_to.image_1024)" alt="Contact"/>
+                                        <img t-else="" class="rounded-circle mt-1 o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
+                                    </div>
+                                    <div class="col pl-0">
+                                        <span t-field="purchase_request.assigned_to" t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True}'/>
+                                        <a href="#discussion" class="small"><i class="fa fa-fw fa-comments"/><b>Send message</b></a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item flex-grow-1">
+                                Save it as a recurrent purchase.<br/>
+                                <a type="button" t-att-href="'/save_purchase_request/' + str(purchase_request.id)" class="btn btn-primary" string="Save request" role="button">
+                                    <span>Save </span><i class="fa fa-floppy-o" aria-hidden=""></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </t>
+                </t>
+
+                <!-- Page Content -->
+                <div id="purchase_request_content" class="col-12 col-lg">
+                    <div class=" col-lg col-12 justify-content-end w-100">
+                        <table class="table table-sm">
+                            <thead class="bg-100">
+                            <tr>
+                                <th>Products</th>
+                                <th class="text-right">Quantity</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <t t-foreach="purchase_request.line_ids" t-as="ol">
+                                <tr>
+                                    <td>
+                                        <img t-att-src="'/web/image/product.product/%s/image_128' % ol.product_id.id" alt="Product" class="d-none d-lg-inline"/>
+                                        [<span t-field="ol.product_id.id"/>] <span t-esc="ol.name"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="ol.product_qty"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- chatter -->
+                    <div id="purchase_request_communication" class="mt-4">
+                        <h2>History</h2>
+                        <t t-call="portal.message_thread">
+                            <t t-set="object" t-value="purchase_request"/>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="portal_new_purchase_request_page" name="New purchase request Portal Template">
+        <t t-call="portal.frontend_layout">
+            <t t-set="is_portal" t-value="True"/>
+            <div id="wrap" class='o_portal_wrap'>
+                <div class="container-fluid mb64" id="purchase_request_container">
+                    <div t-if="purchase_request and purchase_request.review_ids">
+                        <t t-foreach="purchase_request.review_ids" t-as="review">
+                            <div t-att-class="'alert alert-warning' if review.status == 'pending' else 'alert alert-danger' if review.status == 'rejected' else 'alert alert-success' if review.status == 'approved' else 'alert alert-info'">
+                                <p><b>Status:</b> <span t-field="review.status"/>. <span t-if="review.status != 'pending'"><b>Reviewer:</b> <span t-field="review.done_by"/>. <b>Reviewed date:</b> <span t-field="review.reviewed_date"/>.</span></p>
+                                <p t-if="review.has_comment"><b>Comment:</b> <span t-field="review.comment"/></p>
+                            </div>
+                        </t>
+                    </div>
+                    <div id="edit_errors"/>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h3 class="mb-0">
+                                <b t-if="purchase_request" t-field="purchase_request.display_name"/>
+                                <b t-else="">New purchase request</b>
+                            </h3>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <a type="button" t-if="purchase_request" t-att-href="'/save_purchase_request/' + str(purchase_request.id)" class="btn btn-primary" string="Save request" role="button">
+                                <span>Save Cart </span><i class="fa fa-floppy-o" aria-hidden=""></i>
+                            </a>
+                            <a type="button" t-if="purchase_request" t-att-href="'/delete_purchase_request/' + str(purchase_request.id)" class="btn btn-primary" string="Delete request" role="button">
+                                <span>Delete </span><i class="fa fa-trash-o" aria-hidden=""></i>
+                            </a>
+                            <button t-if="purchase_request and purchase_request.state == 'draft' and not purchase_request.review_ids" class="btn btn-primary request_validation" t-att-data-purchase_request="purchase_request.id">Request validation</button>
+                            <button t-if="purchase_request and purchase_request.rejected" class="btn btn-primary restart_validation" t-att-data-purchase_request="purchase_request.id">Restart validation</button>
+                        </div>
+                    </div>
+                    <form class="row mt-4" t-if="not purchase_request" action="#" method="post">
+                        <div class="col-lg-6 offset-lg-3">
+                            <select name="property_id">
+                                <t t-foreach="allowed_property_ids" t-as="property">
+                                    <option t-att-value="property.id">
+                                        <t t-esc="property.name"/>
+                                    </option>
+                                </t>
+                            </select>
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <button type="submit" class="btn btn-primary float-right">Create</button>
+                        </div>
+                    </form>
+                    <div class="row mt-4" t-if="purchase_request">
+                        <div id="purchase_request_content" class="col-12 col-lg">
+                            <div class=" col-lg col-12 justify-content-end w-100">
+                                <table class="table table-sm">
+                                    <thead class="bg-100">
+                                        <tr>
+                                            <th>Products</th>
+                                            <th class="text-right">Quantity</th>
+                                            <th class="text-right">UOM</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="purchase_request_details_list">
+                                        <t t-call="purchase_portal.purchase_request_details_table">
+                                            <t t-set="line_ids" t-value="purchase_request.line_ids"/>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row mt-4" t-if="purchase_request">
+                        <div class="col-12 col-lg">
+                            <div class="col-lg col-12 justify-content-end w-100">
+                                <div class="row">
+                                    <div t-attf-class="col-6 input-group-text mb-2" role="search">
+                                        <t t-set="search_placeholder">Search...</t>
+                                        <input id="search" type="search" t-att-data-purchase_request="purchase_request.id" t-att-data-property_id="current_property_id.id" name="search" class="search-query form-control oe_search_box" t-att-placeholder="placeholder if placeholder else search_placeholder" t-att-value="search"/>
+                                    </div>
+                                    <div t-attf-class="col-6 input-group-text mb-2">
+                                        <select id="product_category" name="product_category" class="purchase_select" t-att-data-purchase_request="purchase_request.id" t-att-data-property_id="current_property_id.id">
+                                            <option value="all">All categories</option>
+                                            <t t-foreach="current_property_id.product_ids.mapped('categ_id')" t-as="categorie">
+                                                <option t-att-value="categorie.id">
+                                                    <t t-esc="categorie.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                        <select id="product_seller" name="product_seller" class="purchase_seller ml-2" t-att-data-purchase_request="purchase_request.id" t-att-data-property_id="current_property_id.id">
+                                            <option value="all">All sellers</option>
+                                            <!-- <t t-foreach="current_property_id.product_ids.seller_ids.filtered(lambda x: x.partner_id in purchase_request.property_id.seller_ids).mapped('partner_id')" t-as="seller"> -->
+                                            <t t-foreach="current_property_id.seller_ids" t-as="seller">
+                                                <option t-att-value="seller.id">
+                                                    <t t-esc="seller.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <table class="table table-sm">
+                                        <thead class="bg-100">
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Category</th>
+                                                <th class="text-right">Quantity</th>
+                                                <th class="text-right">UOM</th>
+                                                <th class="text-right">Seller</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="purchase_request_product_list">
+                                            <t t-call="purchase_portal.purchase_request_product_table">
+                                                <t t-set="purchase_request" t-value="purchase_request"/>
+                                                <t t-set="product_ids" t-value="current_property_id.product_ids"/>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="purchase_request_product_table" name="Purchase request product table">
+        <t t-foreach="product_ids.filtered(lambda x: x.id not in user_id.banned_product_ids.ids)" t-as="product">
+            <tr>
+                <td>
+                    <img t-att-src="'/web/image/product.product/%s/image_128' % product.id" alt="Product" class="d-none d-lg-inline"/>
+                    [<span t-field="product.id"/>] <span t-esc="product.name"/>
+                    <t t-if="product.product_template_attribute_value_ids">
+                        (<t t-foreach="product.product_template_attribute_value_ids" t-as="attribute_value">
+                            <span t-esc="attribute_value.name" class="mr-1"/>
+                        </t>)
+                    </t>
+                </td>
+                <td class="text-right">
+                    <span t-field="product.categ_id"/>
+                </td>
+                <td class="text-right">
+                    <input class="form-control input_mx_70" name="product_qty" type="number" value="1"/>
+                </td>
+                <td class="text-right">
+                    <span t-field="product.uom_po_id"/>
+                </td>
+                <td class="text-right">
+                    <t t-if="product.mapped('seller_ids.partner_id') and purchase_request.property_id.seller_ids">
+                        <t t-foreach="product.seller_ids.filtered(lambda x: x.partner_id in (purchase_request.property_id.seller_ids + purchase_request.property_id.seller_commercial_ids)).mapped('partner_id')[0]" t-as="seller">
+                            <t t-if="seller not in purchase_request.property_id.seller_ids">
+                                <t t-set="seller_child" t-value="purchase_request.property_id.seller_ids.filtered(lambda x: x.commercial_partner_id == seller)"/>
+                                <span class="ml-2">
+                                    <t t-esc="seller_child.name"/><br/>
+                                    <t t-esc="seller_child.email"/><br/>
+                                    <t t-esc="seller_child.phone"/><br/>
+                                    <t>Minimum purchase import: </t>
+                                    <t t-if="seller_child.min_purchase_amount">
+                                        <t t-esc="seller_child.min_purchase_amount"/>
+                                        <t t-esc="seller_child.property_purchase_currency_id.symbol"/>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-esc="seller_child.commercial_partner_id.min_purchase_amount"/>
+                                        <t t-esc="seller_child.commercial_partner_id.property_purchase_currency_id.symbol"/>
+                                    </t>
+                                </span>
+                            </t>
+                            <t t-else="">
+                                <span class="ml-2">
+                                    <t t-esc="seller.name"/><br/>
+                                    <t t-esc="seller.email"/><br/>
+                                    <t t-esc="seller.phone"/><br/>
+                                    <t>Minimum purchase import:</t>
+                                    <t t-if="seller.min_purchase_amount">
+                                        <t t-esc="seller.min_purchase_amount"/>
+                                        <t t-if="seller.property_purchase_currency_id">
+                                            <t t-esc="seller.property_purchase_currency_id.symbol"/>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="purchase_request.company_id.currency_id.symbol"/>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-esc="seller.commercial_partner_id.min_purchase_amount"/>
+                                        <t t-if="seller.commercial_partner_id.property_purchase_currency_id">
+                                            <t t-esc="seller.commercial_partner_id.property_purchase_currency_id.symbol"/>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="purchase_request.company_id.currency_id.symbol"/>
+                                        </t>
+                                    </t>
+                                </span>
+                            </t>
+                            <br  t-if="seller.id != product.mapped('seller_ids.partner_id')[-1].id" />
+                        </t>
+                    </t>
+                </td>
+                <td class="text-right">
+                    <button class="btn btn-primary request_add_to_cart" t-att-data-purchase_request="purchase_request.id" t-att-data-product_id="product.id">Add</button>
+                </td>
+            </tr>
+        </t>
+    </template>
+
+    <template id="purchase_request_details_table" name="Purchase request details table">
+        <t t-foreach="line_ids" t-as="ol">
+            <tr>
+                <td>
+                    <img t-att-src="'/web/image/product.product/%s/image_128' % ol.product_id.id" alt="Product"
+                        class="d-none d-lg-inline"/>
+                    [<span t-field="ol.product_id.id"/>] <span t-esc="ol.name"/>
+                    <t t-if="ol.product_id.product_template_attribute_value_ids">
+                        (<t t-foreach="ol.product_id.product_template_attribute_value_ids" t-as="attribute_value">
+                            <span t-esc="attribute_value.name" class="mr-1"/>
+                        </t>)
+                    </t>
+                </td>
+                <td class="text-right">
+                    <input class="form-control input_mx_70 purchase_update_line" t-att-data-line_id="ol.id" name="product_qty" type="number" t-att-value="ol.product_qty"/>
+                </td>
+                <td class="text-right">
+                    <span t-field="ol.product_id.uom_po_id"/>
+                </td>
+                <td class="text-right">
+                    <a href="#" class="purchase_delete_line" t-att-data-line_id="ol.id">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </t>
+    </template>
+
+</odoo>

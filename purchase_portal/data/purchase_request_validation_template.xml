@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="alda_purchase_request_validation" model="mail.template">
+        <field name="name">Alda Purchase Request: New validation request</field>
+        <field name="model_id" ref="purchase_request.model_purchase_request" />
+        <field
+            name="subject"
+        >{{ object.property_id.name}}: Solicitud de compra (Ref {{ object.name or 'n/a' }}) - {{ object.company_id.name}}</field>
+        <field
+            name="email_from"
+        >{{ object.property_id.partner_id.email}}</field>
+        <field name="email_to">
+            {{', '.join([r.email for r in object.reviewer_ids if r.email])}}
+        </field>
+        <field name="body_html" type="html">
+                <div style="background-color:#ffffff;margin: 0; padding: 0; min-width: 100%;">
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff">
+                        <tbody><tr>
+                            <td>
+                                <table style="width:650px;border: 1px solid #eeeeee; background-color:#f6f6f6;" align="center" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody><tr>
+                                        <td style="padding:30px;background-color:#242424;">
+                                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                <tbody><tr>
+                                                    <td width="50%" valign="middle">
+                                                        <img src="https://firma.aldahotels.es/img/logowhite.png" alt="Alda Hotels" style="width:200px;height: auto;"/>
+                                                    </td>
+                                                    <td align="right" valign="middle" width="50%" style="padding:0 15px;">
+                                                        <a href="https://www.facebook.com/AldaHotels/"><img src="https://firma.aldahotels.es/img/fb_white.png" alt="facebook" style="padding:5px 3px;"/></a>
+                                                        <a href="https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw"><img src="https://firma.aldahotels.es/img/yt_white.png" alt="youtube" style="padding:5px 3px;"/></a>
+                                                        <a href="https://www.instagram.com/aldahotels/?hl=en/"><img src="https://firma.aldahotels.es/img/ig_white.png" alt="instagram" style="padding:5px 3px;"/></a>
+                                                        <a href="https://es.linkedin.com/company/aldahotels"><img src="https://firma.aldahotels.es/img/in_white.png" alt="linked-in" style="padding:5px 3px;"/></a>
+                                                        <a href="https://twitter.com/AldaHotels"><img src="https://firma.aldahotels.es/img/x_white.png" alt="x" style="padding:5px 3px;"/></a>
+                                                        <br/>
+                                                        <a href="https://www.aldahotels.es/" style="font-size:15px;color:#FFFFFF;">aldahotels.es</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:60px 30px 20px 30px;">
+                                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                <tbody><tr>
+                                                    <td align="center" style="font-size:24px;">Nueva solcitud de compra</td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center" style="padding:20px 0;">
+                                                        <div style="width:50px;height: 5px; background-color:#242424;"></div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="paragraph" style="padding:20px 0 0 0;" align="justify">
+                                                        <span style="font-style:italic;">
+                                                            <br/>
+                                                            Se te ha asignado una nueva solicitud de compra para su validación:
+                                                            <ul>
+                                                                <t t-set="base_url" t-value="object.get_base_url()"/>
+                                                                <li>
+                                                                    <a t-att-href="base_url + '/web#id=%s&amp;model=%s&amp;view_type=form' % (object.id, object._name)">
+                                                                        <strong>Número:</strong> <t t-esc="object.name" />
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <br/>
+                                                            <div style="margin: 0px; padding: 0px;">
+                                                                <table width="100%" style="color: #454748; font-size: 12px; border-collapse: collapse;">
+                                                                  <tr style="border-bottom: 2px solid #dee2e6;">
+                                                                    <td style="width: 150px;">
+                                                                      <span style="font-weight:bold;">Producto</span>
+                                                                    </td>
+                                                                    <td></td>
+                                                                    <td width="15%" align="center">
+                                                                      <span style="font-weight:bold;">Cantidad</span>
+                                                                    </td>
+                                                                    <td width="20%" align="right">
+                                                                      <span style="font-weight:bold;">
+                                                                        Precio estimado
+                                                                      </span>
+                                                                    </td>
+                                                                  </tr>
+                                                                </table>
+                                                                <t t-foreach="object.line_ids" t-as="line">
+                                                                    <table width="100%" style="color: #454748; font-size: 12px; border-collapse: collapse;">
+                                                                        <t t-set="loop_cycle_number" t-value="loop_cycle_number or 0"></t>
+                                                                        <tr t-att-style="'background-color: #f2f2f2' if loop_cycle_number % 2 == 0 else 'background-color: #ffffff'">
+                                                                          <t t-set="loop_cycle_number" t-value="loop_cycle_number + 1"></t>
+                                                                          <td style="width: 150px;">
+                                                                            <img t-attf-src="/web/image/product.product/{{ line.product_id.id }}/image_128" style="width: 64px; height: 64px; object-fit: contain;" alt="Product image"></img>
+                                                                          </td>
+                                                                          <td align="left" t-out="line.product_id.name or ''"></td>
+                                                                          <td width="15%" align="center"> <t t-out="line.product_qty or ''"/> <t t-out="line.product_uom_id.display_name or ''"/></td>
+                                                                          <td width="20%" align="right">
+                                                                            <span style="font-weight:bold;">
+                                                                                <t t-out="format_amount(line.estimated_cost, object.currency_id) or ''"></t>
+                                                                            </span>
+                                                                          </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </t>
+                                                            </div>
+                                                            <br/>
+                                                            Saludos cordiales,
+                                                            <br/>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding:30px;background-color:#242424;">
+                                                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                            <tbody><tr>
+                                                                <td width="50%" valign="middle">
+                                                                    <img src="https://firma.aldahotels.es/img/logowhite.png" alt="Alda Hotels" style="width:200px;height: auto;"/>
+                                                                </td>
+                                                                <td align="right" valign="middle" width="50%" style="padding:0 15px;">
+                                                                    <a href="https://www.facebook.com/AldaHotels/"><img src="https://firma.aldahotels.es/img/fb_white.png" alt="facebook" style="padding:5px 3px;"/></a>
+                                                                    <a href="https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw"><img src="https://firma.aldahotels.es/img/yt_white.png" alt="youtube" style="padding:5px 3px;"/></a>
+                                                                    <a href="https://www.instagram.com/aldahotels/?hl=en/"><img src="https://firma.aldahotels.es/img/ig_white.png" alt="instagram" style="padding:5px 3px;"/></a>
+                                                                    <a href="https://es.linkedin.com/company/aldahotels"><img src="https://firma.aldahotels.es/img/in_white.png" alt="linked-in" style="padding:5px 3px;"/></a>
+                                                                    <a href="https://twitter.com/AldaHotels"><img src="https://firma.aldahotels.es/img/x_white.png" alt="x" style="padding:5px 3px;"/></a>
+                                                                    <br/>
+                                                                    <a href="https://www.aldahotels.es/" style="font-size:15px;color:#FFFFFF;">aldahotels.es</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody></table>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+        </field>
+        <field name="lang">${object.partner_id.lang}</field>
+    </record>
+</odoo>

@@ -1,0 +1,2023 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_portal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-22 15:49+0000\n"
+"PO-Revision-Date: 2025-05-22 15:49+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_portal
+#: model:mail.template,subject:purchase_portal.alda_purchase_pos
+#: model:mail.template,subject:purchase_portal.alda_purchase_remainder
+msgid ""
+"${object.property_id.name}: Pedido (Ref ${object.name or 'n/a' }) - "
+"${object.company_id.name}"
+msgstr ""
+
+#. module: purchase_portal
+#: model:mail.template,subject:purchase_portal.alda_purchase_rfq
+msgid ""
+"${object.property_id.name}: Presupuesto - Pedido (Ref ${object.name or 'n/a'"
+" }) - ${object.company_id.name}"
+msgstr ""
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+msgid ". <b>Reviewed date:</b>"
+msgstr ". <b>Fecha de revisión:</b>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+msgid "<b>Comment:</b>"
+msgstr "<b>Comentario:</b>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+msgid "<b>Reviewer:</b>"
+msgstr "<b>Revisor:</b>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+msgid "<b>Status:</b>"
+msgstr "<b>Estado:</b>"
+
+#. module: purchase_portal
+#: model:mail.template,body_html:purchase_portal.alda_purchase_pos
+msgid ""
+"<div style=\"background-color:#ffffff;margin: 0; padding: 0; min-width: 100%;\">\n"
+"                        <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#ffffff\">\n"
+"                            <tbody><tr>\n"
+"                                <td>\n"
+"                                    <table style=\"width:650px;border: 1px solid #eeeeee; background-color:#f6f6f6;\" align=\"center\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                        <tbody><tr>\n"
+"                                            <td style=\"padding:30px;background-color:#242424;\">\n"
+"                                                <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                    <tbody><tr>\n"
+"                                                        <td width=\"50%\" valign=\"middle\">\n"
+"                                                            <img src=\"https://firma.aldahotels.es/img/logowhite.png\" alt=\"Alda Hotels\" style=\"width:200px;height: auto;\">\n"
+"                                                        </td>\n"
+"                                                        <td align=\"right\" valign=\"middle\" width=\"50%\" style=\"padding:0 15px;\">\n"
+"                                                            <a href=\"https://www.facebook.com/AldaHotels/\"><img src=\"https://firma.aldahotels.es/img/fb_white.png\" alt=\"facebook\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw\"><img src=\"https://firma.aldahotels.es/img/yt_white.png\" alt=\"youtube\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://www.instagram.com/aldahotels/?hl=en/\"><img src=\"https://firma.aldahotels.es/img/ig_white.png\" alt=\"instagram\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://es.linkedin.com/company/aldahotels\"><img src=\"https://firma.aldahotels.es/img/in_white.png\" alt=\"linked-in\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://twitter.com/AldaHotels\"><img src=\"https://firma.aldahotels.es/img/x_white.png\" alt=\"x\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <br>\n"
+"                                                            <a href=\"https://www.aldahotels.es/\" style=\"font-size:15px;color:#FFFFFF;\">aldahotels.es</a>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                </tbody></table>\n"
+"                                            </td>\n"
+"                                        </tr>\n"
+"                                        <tr>\n"
+"                                            <td style=\"padding:60px 30px 20px 30px;\">\n"
+"                                            \n"
+"                                                    <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                    <tbody><tr>\n"
+"                                                        <td align=\"center\" style=\"font-size:24px;\">Pedido de Compra</td>\n"
+"                                                    </tr>\n"
+"                                                    <tr>\n"
+"                                                        <td align=\"center\" style=\"padding:20px 0;\">\n"
+"                                                            <div style=\"width:50px;height: 5px; background-color:#242424;\"></div>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                    <tr>\n"
+"                                                        <td style=\"padding:20px 0;\" align=\"justify\">\n"
+"                                                            Estimado/a ${object.partner_id.name}\n"
+"                                                            % if object.partner_id.parent_id:\n"
+"                                                                (${object.partner_id.parent_id.name})\n"
+"                                                            % endif\n"
+"                                                            <br>\n"
+"                                                            Le adjuntamos el pedido de compra:\n"
+"                                                            <ul>\n"
+"                                                                <li><strong>Número: ${object.name}</strong></li>\n"
+"                                                                % if object.partner_ref:\n"
+"                                                                    <li>Con referencia: ${object.partner_ref}</li>\n"
+"                                                                % endif\n"
+"                                                                <li>Por un valor de: <strong>${format_amount(object.amount_total, object.currency_id)}</strong> de ${object.company_id.name}</li>\n"
+"                                                                <li>Para ser entregado en: \n"
+"                                                                    <strong>${object.picking_type_id.name} <br>\n"
+"                                                                        Hotel: ${object.property_id.name} <br>\n"
+"                                                                        Ciudad: ${object.property_id.city} <br>\n"
+"                                                                        Provincia: ${object.property_id.state_id.name} <br>\n"
+"                                                                        Código Postal: ${object.property_id.zip} <br>\n"
+"                                                                        Teléfono: ${object.property_id.phone} <br>\n"
+"                                                                    </strong>\n"
+"                                                                </li>\n"
+"                                                            </ul>\n"
+"                                                            % if object.date_planned:\n"
+"                                                                <br>\n"
+"                                                                La recepción se espera para <strong>${format_date(object.date_planned)}</strong>.\n"
+"                                                                <br>\n"
+"                                                                Por favor responda el correo confirmando la recepción del pedido. \n"
+"                                                            % endif\n"
+"                                                            <br>\n"
+"                                                            Saludos cordiales,\n"
+"                                                            <br>\n"
+"                                                        </td>\n"
+"                                                    </tr><tr>\n"
+"                                                        <td style=\"padding:30px;background-color:#242424;\">\n"
+"                                                            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                                <tbody><tr>\n"
+"                                                                    <td width=\"50%\" valign=\"middle\">\n"
+"                                                                        <img src=\"https://firma.aldahotels.es/img/logowhite.png\" alt=\"Alda Hotels\" style=\"width:200px;height: auto;\">\n"
+"                                                                    </td>\n"
+"                                                                    <td align=\"right\" valign=\"middle\" width=\"50%\" style=\"padding:0 15px;\">\n"
+"                                                                        <a href=\"https://www.facebook.com/AldaHotels/\"><img src=\"https://firma.aldahotels.es/img/fb_white.png\" alt=\"facebook\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw\"><img src=\"https://firma.aldahotels.es/img/yt_white.png\" alt=\"youtube\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://www.instagram.com/aldahotels/?hl=en/\"><img src=\"https://firma.aldahotels.es/img/ig_white.png\" alt=\"instagram\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://es.linkedin.com/company/aldahotels\"><img src=\"https://firma.aldahotels.es/img/in_white.png\" alt=\"linked-in\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://twitter.com/AldaHotels\"><img src=\"https://firma.aldahotels.es/img/x_white.png\" alt=\"x\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <br>\n"
+"                                                                        <a href=\"https://www.aldahotels.es/\" style=\"font-size:15px;color:#FFFFFF;\">aldahotels.es</a>\n"
+"                                                                    </td>\n"
+"                                                                </tr>\n"
+"                                                            </tbody></table>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                </tbody></table>\n"
+"                                            </td>\n"
+"                                        </tr>\n"
+"                                    </tbody></table>\n"
+"                                </td>\n"
+"                            </tr>\n"
+"                        </tbody></table>\n"
+"                    </div>\n"
+"            "
+msgstr ""
+
+#. module: purchase_portal
+#: model:mail.template,body_html:purchase_portal.alda_purchase_remainder
+msgid ""
+"<div style=\"background-color:#ffffff;margin: 0; padding: 0; min-width: 100%;\">\n"
+"                        <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#ffffff\">\n"
+"                            <tbody><tr>\n"
+"                                <td>\n"
+"                                    <table style=\"width:650px;border: 1px solid #eeeeee; background-color:#f6f6f6;\" align=\"center\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                        <tbody><tr>\n"
+"                                            <td style=\"padding:30px;background-color:#242424;\">\n"
+"                                                <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                    <tbody><tr>\n"
+"                                                        <td width=\"50%\" valign=\"middle\">\n"
+"                                                            <img src=\"https://firma.aldahotels.es/img/logowhite.png\" alt=\"Alda Hotels\" style=\"width:200px;height: auto;\">\n"
+"                                                        </td>\n"
+"                                                        <td align=\"right\" valign=\"middle\" width=\"50%\" style=\"padding:0 15px;\">\n"
+"                                                            <a href=\"https://www.facebook.com/AldaHotels/\"><img src=\"https://firma.aldahotels.es/img/fb_white.png\" alt=\"facebook\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw\"><img src=\"https://firma.aldahotels.es/img/yt_white.png\" alt=\"youtube\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://www.instagram.com/aldahotels/?hl=en/\"><img src=\"https://firma.aldahotels.es/img/ig_white.png\" alt=\"instagram\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://es.linkedin.com/company/aldahotels\"><img src=\"https://firma.aldahotels.es/img/in_white.png\" alt=\"linked-in\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://twitter.com/AldaHotels\"><img src=\"https://firma.aldahotels.es/img/x_white.png\" alt=\"x\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <br>\n"
+"                                                            <a href=\"https://www.aldahotels.es/\" style=\"font-size:15px;color:#FFFFFF;\">aldahotels.es</a>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                </tbody></table>\n"
+"                                            </td>\n"
+"                                        </tr>\n"
+"                                        <tr>\n"
+"                                            <td style=\"padding:60px 30px 20px 30px;\">\n"
+"                                                <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                    <tbody><tr>\n"
+"                                                        <td align=\"center\" style=\"font-size:24px;\">Recordatorio de entrega pendiente</td>\n"
+"                                                    </tr>\n"
+"                                                    <tr>\n"
+"                                                        <td align=\"center\" style=\"padding:20px 0;\">\n"
+"                                                            <div style=\"width:50px;height: 5px; background-color:#242424;\"></div>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                    <tr>\n"
+"                                                        <td class=\"paragraph\" style=\"padding:20px 0 0 0;\" align=\"justify\">\n"
+"                                                            Estimado/a ${object.partner_id.name} \n"
+"                                                                % if object.partner_id.parent_id:\n"
+"                                                                    (${object.partner_id.parent_id.name})\n"
+"                                                                % endif\n"
+"                                                            <br>\n"
+"                                                            <span style=\"font-style:italic;\"> \n"
+"                                                                <br>\n"
+"                                                                Este es un recordatorio de que la entrega del pedido de compra:\n"
+"                                                                <ul>\n"
+"                                                                    <li><strong>Número:</strong> ${object.name}\n"
+"                                                                        % if object.partner_ref:\n"
+"                                                                            ${object.partner_ref}\n"
+"                                                                        % endif \n"
+"                                                                    </li>\n"
+"                                                                    <li><strong>Para ser entregado en el almacén:</strong> ${object.picking_type_id.name}\n"
+"                                                                    </li>\n"
+"                                                                    <li><strong>Dirección:\n"
+"                                                                        <br>${object.property_id.name}\n"
+"                                                                        <br>Ciudad:</strong> ${object.property_id.city}\n"
+"                                                                        <br><strong>Calle:</strong> ${object.property_id.street}\n"
+"                                                                        <br><strong>Provincia:</strong> ${object.property_id.state_id.name}\n"
+"                                                                        <br><strong>Código Postal:</strong> ${object.property_id.zip}\n"
+"                                                                        <br><strong>Teléfono:</strong> ${object.property_id.phone}\n"
+"                                                                    </li>\n"
+"                                                                </ul>\n"
+"                                                                <br>\n"
+"                                                                ¿Podría confirmar que se entregará a tiempo?\n"
+"                                                                <br>\n"
+"                                                                Saludos cordiales,\n"
+"                                                                <br>\n"
+"                                                            </span>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                    <tr>\n"
+"                                                        <td style=\"padding:30px;background-color:#242424;\">\n"
+"                                                            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                                <tbody><tr>\n"
+"                                                                    <td width=\"50%\" valign=\"middle\">\n"
+"                                                                        <img src=\"https://firma.aldahotels.es/img/logowhite.png\" alt=\"Alda Hotels\" style=\"width:200px;height: auto;\">\n"
+"                                                                    </td>\n"
+"                                                                    <td align=\"right\" valign=\"middle\" width=\"50%\" style=\"padding:0 15px;\">\n"
+"                                                                        <a href=\"https://www.facebook.com/AldaHotels/\"><img src=\"https://firma.aldahotels.es/img/fb_white.png\" alt=\"facebook\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw\"><img src=\"https://firma.aldahotels.es/img/yt_white.png\" alt=\"youtube\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://www.instagram.com/aldahotels/?hl=en/\"><img src=\"https://firma.aldahotels.es/img/ig_white.png\" alt=\"instagram\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://es.linkedin.com/company/aldahotels\"><img src=\"https://firma.aldahotels.es/img/in_white.png\" alt=\"linked-in\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://twitter.com/AldaHotels\"><img src=\"https://firma.aldahotels.es/img/x_white.png\" alt=\"x\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <br>\n"
+"                                                                        <a href=\"https://www.aldahotels.es/\" style=\"font-size:15px;color:#FFFFFF;\">aldahotels.es</a>\n"
+"                                                                    </td>\n"
+"                                                                </tr>\n"
+"                                                            </tbody></table>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                </tbody></table>\n"
+"                                            </td>\n"
+"                                        </tr>\n"
+"                                    </tbody></table>\n"
+"                                </td>\n"
+"                            </tr>\n"
+"                        </tbody></table>\n"
+"                    </div>\n"
+"            "
+msgstr ""
+
+#. module: purchase_portal
+#: model:mail.template,body_html:purchase_portal.alda_purchase_rfq
+msgid ""
+"<div style=\"background-color:#ffffff;margin: 0; padding: 0; min-width: 100%;\">\n"
+"                        <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#ffffff\">\n"
+"                            <tbody><tr>\n"
+"                                <td>\n"
+"                                    <table style=\"width:650px;border: 1px solid #eeeeee; background-color:#f6f6f6;\" align=\"center\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                        <tbody><tr>\n"
+"                                            <td style=\"padding:30px;background-color:#242424;\">\n"
+"                                                <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                    <tbody><tr>\n"
+"                                                        <td width=\"50%\" valign=\"middle\">\n"
+"                                                            <img src=\"https://firma.aldahotels.es/img/logowhite.png\" alt=\"Alda Hotels\" style=\"width:200px;height: auto;\">\n"
+"                                                        </td>\n"
+"                                                        <td align=\"right\" valign=\"middle\" width=\"50%\" style=\"padding:0 15px;\">\n"
+"                                                            <a href=\"https://www.facebook.com/AldaHotels/\"><img src=\"https://firma.aldahotels.es/img/fb_white.png\" alt=\"facebook\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw\"><img src=\"https://firma.aldahotels.es/img/yt_white.png\" alt=\"youtube\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://www.instagram.com/aldahotels/?hl=en/\"><img src=\"https://firma.aldahotels.es/img/ig_white.png\" alt=\"instagram\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://es.linkedin.com/company/aldahotels\"><img src=\"https://firma.aldahotels.es/img/in_white.png\" alt=\"linked-in\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <a href=\"https://twitter.com/AldaHotels\"><img src=\"https://firma.aldahotels.es/img/x_white.png\" alt=\"x\" style=\"padding:5px 3px;\"></a>\n"
+"                                                            <br>\n"
+"                                                            <a href=\"https://www.aldahotels.es/\" style=\"font-size:15px;color:#FFFFFF;\">aldahotels.es</a>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                </tbody></table>\n"
+"                                            </td>\n"
+"                                        </tr>\n"
+"                                        <tr>\n"
+"                                            <td style=\"padding:60px 30px 20px 30px;\">\n"
+"                                                <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                    <tbody><tr>\n"
+"                                                        <td align=\"center\" style=\"font-size:24px;\">Solicitud de Presupuesto</td>\n"
+"                                                    </tr>\n"
+"                                                    <tr>\n"
+"                                                        <td align=\"center\" style=\"padding:20px 0;\">\n"
+"                                                            <div style=\"width:50px;height: 5px; background-color:#242424;\"></div>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                    <tr>\n"
+"                                                        <td class=\"paragraph\" style=\"padding:20px 0 0 0;\" align=\"justify\">\n"
+"                                                            Estimado/a ${object.partner_id.name} \n"
+"                                                                % if object.partner_id.parent_id:\n"
+"                                                                    (${object.partner_id.parent_id.name})\n"
+"                                                                % endif\n"
+"                                                            <br>\n"
+"                                                                <br>\n"
+"                                                                Aquí está adjunta la solicitud de presupuesto:\n"
+"                                                                <br>\n"
+"                                                                <ul>\n"
+"                                                                    <li><strong>Número:</strong> ${object.name}\n"
+"                                                                        % if object.partner_ref:\n"
+"                                                                            ${object.partner_ref}\n"
+"                                                                        % endif \n"
+"                                                                    </li>\n"
+"                                                                    <li>Por un valor de: <strong>${format_amount(object.amount_total, object.currency_id)}</strong></li>\n"
+"                                                                    <li><strong>Para ser entregado en el almacén:</strong> ${object.picking_type_id.name}\n"
+"                                                                    </li>\n"
+"                                                                    <li><strong>Dirección:\n"
+"                                                                        <br>${object.property_id.name}\n"
+"                                                                        <br>Ciudad:</strong> ${object.property_id.city}\n"
+"                                                                        <br><strong>Calle:</strong> ${object.property_id.street}\n"
+"                                                                        <br><strong>Provincia:</strong> ${object.property_id.state_id.name}\n"
+"                                                                        <br><strong>Código Postal:</strong> ${object.property_id.zip}\n"
+"                                                                        <br><strong>Teléfono:</strong> ${object.property_id.phone}\n"
+"                                                                    </li>\n"
+"                                                                </ul>\n"
+"                                                                <br>\n"
+"                                                                Si tiene alguna pregunta, no dude en contactarnos.\n"
+"                                                                <br>\n"
+"                                                                Saludos cordiales,\n"
+"                                                            <br>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                    <tr>\n"
+"                                                        <td style=\"padding:30px;background-color:#242424;\">\n"
+"                                                            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                                <tbody><tr>\n"
+"                                                                    <td width=\"50%\" valign=\"middle\">\n"
+"                                                                        <img src=\"https://firma.aldahotels.es/img/logowhite.png\" alt=\"Alda Hotels\" style=\"width:200px;height: auto;\">\n"
+"                                                                    </td>\n"
+"                                                                    <td align=\"right\" valign=\"middle\" width=\"50%\" style=\"padding:0 15px;\">\n"
+"                                                                        <a href=\"https://www.facebook.com/AldaHotels/\"><img src=\"https://firma.aldahotels.es/img/fb_white.png\" alt=\"facebook\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw\"><img src=\"https://firma.aldahotels.es/img/yt_white.png\" alt=\"youtube\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://www.instagram.com/aldahotels/?hl=en/\"><img src=\"https://firma.aldahotels.es/img/ig_white.png\" alt=\"instagram\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://es.linkedin.com/company/aldahotels\"><img src=\"https://firma.aldahotels.es/img/in_white.png\" alt=\"linked-in\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <a href=\"https://twitter.com/AldaHotels\"><img src=\"https://firma.aldahotels.es/img/x_white.png\" alt=\"x\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                        <br>\n"
+"                                                                        <a href=\"https://www.aldahotels.es/\" style=\"font-size:15px;color:#FFFFFF;\">aldahotels.es</a>\n"
+"                                                                    </td>\n"
+"                                                                </tr>\n"
+"                                                            </tbody></table>\n"
+"                                                        </td>\n"
+"                                                    </tr>\n"
+"                                                </tbody></table>\n"
+"                                            </td>\n"
+"                                        </tr>\n"
+"                                    </tbody></table>\n"
+"                                </td>\n"
+"                            </tr>\n"
+"                        </tbody></table>\n"
+"                    </div>\n"
+"            "
+msgstr ""
+
+#. module: purchase_portal
+#: model:mail.template,body_html:purchase_portal.alda_purchase_request_validation
+msgid ""
+"<div style=\"background-color:#ffffff;margin: 0; padding: 0; min-width: 100%;\">\n"
+"                    <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#ffffff\">\n"
+"                        <tbody><tr>\n"
+"                            <td>\n"
+"                                <table style=\"width:650px;border: 1px solid #eeeeee; background-color:#f6f6f6;\" align=\"center\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                    <tbody><tr>\n"
+"                                        <td style=\"padding:30px;background-color:#242424;\">\n"
+"                                            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                <tbody><tr>\n"
+"                                                    <td width=\"50%\" valign=\"middle\">\n"
+"                                                        <img src=\"https://firma.aldahotels.es/img/logowhite.png\" alt=\"Alda Hotels\" style=\"width:200px;height: auto;\">\n"
+"                                                    </td>\n"
+"                                                    <td align=\"right\" valign=\"middle\" width=\"50%\" style=\"padding:0 15px;\">\n"
+"                                                        <a href=\"https://www.facebook.com/AldaHotels/\"><img src=\"https://firma.aldahotels.es/img/fb_white.png\" alt=\"facebook\" style=\"padding:5px 3px;\"></a>\n"
+"                                                        <a href=\"https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw\"><img src=\"https://firma.aldahotels.es/img/yt_white.png\" alt=\"youtube\" style=\"padding:5px 3px;\"></a>\n"
+"                                                        <a href=\"https://www.instagram.com/aldahotels/?hl=en/\"><img src=\"https://firma.aldahotels.es/img/ig_white.png\" alt=\"instagram\" style=\"padding:5px 3px;\"></a>\n"
+"                                                        <a href=\"https://es.linkedin.com/company/aldahotels\"><img src=\"https://firma.aldahotels.es/img/in_white.png\" alt=\"linked-in\" style=\"padding:5px 3px;\"></a>\n"
+"                                                        <a href=\"https://twitter.com/AldaHotels\"><img src=\"https://firma.aldahotels.es/img/x_white.png\" alt=\"x\" style=\"padding:5px 3px;\"></a>\n"
+"                                                        <br>\n"
+"                                                        <a href=\"https://www.aldahotels.es/\" style=\"font-size:15px;color:#FFFFFF;\">aldahotels.es</a>\n"
+"                                                    </td>\n"
+"                                                </tr>\n"
+"                                            </tbody></table>\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                    <tr>\n"
+"                                        <td style=\"padding:60px 30px 20px 30px;\">\n"
+"                                            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                <tbody><tr>\n"
+"                                                    <td align=\"center\" style=\"font-size:24px;\">Nueva solcitud de compra</td>\n"
+"                                                </tr>\n"
+"                                                <tr>\n"
+"                                                    <td align=\"center\" style=\"padding:20px 0;\">\n"
+"                                                        <div style=\"width:50px;height: 5px; background-color:#242424;\"></div>\n"
+"                                                    </td>\n"
+"                                                </tr>\n"
+"                                                <tr>\n"
+"                                                    <td class=\"paragraph\" style=\"padding:20px 0 0 0;\" align=\"justify\">\n"
+"                                                        <span style=\"font-style:italic;\">\n"
+"                                                            <br>\n"
+"                                                            Se te ha asignado una nueva solicitud de compra para su validación:\n"
+"                                                            <ul>\n"
+"                                                                <t t-set=\"base_url\" t-value=\"object.get_base_url()\"></t>\n"
+"                                                                <li>\n"
+"                                                                    <a t-att-href=\"base_url + '/web#id=%s&amp;model=%s&amp;view_type=form' % (object.id, object._name)\">\n"
+"                                                                        <strong>Número:</strong> <t t-esc=\"object.name\"></t>\n"
+"                                                                    </a>\n"
+"                                                                </li>\n"
+"                                                            </ul>\n"
+"                                                            <br>\n"
+"                                                            <div style=\"margin: 0px; padding: 0px;\">\n"
+"                                                                <table width=\"100%\" style=\"color: #454748; font-size: 12px; border-collapse: collapse;\">\n"
+"                                                                  <tr style=\"border-bottom: 2px solid #dee2e6;\">\n"
+"                                                                    <td style=\"width: 150px;\">\n"
+"                                                                      <span style=\"font-weight:bold;\">Producto</span>\n"
+"                                                                    </td>\n"
+"                                                                    <td></td>\n"
+"                                                                    <td width=\"15%\" align=\"center\">\n"
+"                                                                      <span style=\"font-weight:bold;\">Cantidad</span>\n"
+"                                                                    </td>\n"
+"                                                                    <td width=\"20%\" align=\"right\">\n"
+"                                                                      <span style=\"font-weight:bold;\">\n"
+"                                                                        Precio estimado\n"
+"                                                                      </span>\n"
+"                                                                    </td>\n"
+"                                                                  </tr>\n"
+"                                                                </table>\n"
+"                                                                <t t-foreach=\"object.line_ids\" t-as=\"line\">\n"
+"                                                                    <table width=\"100%\" style=\"color: #454748; font-size: 12px; border-collapse: collapse;\">\n"
+"                                                                        <t t-set=\"loop_cycle_number\" t-value=\"loop_cycle_number or 0\"></t>\n"
+"                                                                        <tr t-att-style=\"'background-color: #f2f2f2' if loop_cycle_number % 2 == 0 else 'background-color: #ffffff'\">\n"
+"                                                                          <t t-set=\"loop_cycle_number\" t-value=\"loop_cycle_number + 1\"></t>\n"
+"                                                                          <td style=\"width: 150px;\">\n"
+"                                                                            <img t-attf-src=\"/web/image/product.product/{{ line.product_id.id }}/image_128\" style=\"width: 64px; height: 64px; object-fit: contain;\" alt=\"Product image\">\n"
+"                                                                          </td>\n"
+"                                                                          <td align=\"left\" t-out=\"line.product_id.name or ''\"></td>\n"
+"                                                                          <td width=\"15%\" align=\"center\"> <t t-out=\"line.product_qty or ''\"></t> <t t-out=\"line.product_uom_id.display_name or ''\"></t></td>\n"
+"                                                                          <td width=\"20%\" align=\"right\">\n"
+"                                                                            <span style=\"font-weight:bold;\">\n"
+"                                                                                <t t-out=\"format_amount(line.estimated_cost, object.currency_id) or ''\"></t>\n"
+"                                                                            </span>\n"
+"                                                                          </td>\n"
+"                                                                        </tr>\n"
+"                                                                    </table>\n"
+"                                                                </t>\n"
+"                                                            </div>\n"
+"                                                            <br>\n"
+"                                                            Saludos cordiales,\n"
+"                                                            <br>\n"
+"                                                        </span>\n"
+"                                                    </td>\n"
+"                                                </tr>\n"
+"                                                <tr>\n"
+"                                                    <td style=\"padding:30px;background-color:#242424;\">\n"
+"                                                        <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                            <tbody><tr>\n"
+"                                                                <td width=\"50%\" valign=\"middle\">\n"
+"                                                                    <img src=\"https://firma.aldahotels.es/img/logowhite.png\" alt=\"Alda Hotels\" style=\"width:200px;height: auto;\">\n"
+"                                                                </td>\n"
+"                                                                <td align=\"right\" valign=\"middle\" width=\"50%\" style=\"padding:0 15px;\">\n"
+"                                                                    <a href=\"https://www.facebook.com/AldaHotels/\"><img src=\"https://firma.aldahotels.es/img/fb_white.png\" alt=\"facebook\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                    <a href=\"https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw\"><img src=\"https://firma.aldahotels.es/img/yt_white.png\" alt=\"youtube\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                    <a href=\"https://www.instagram.com/aldahotels/?hl=en/\"><img src=\"https://firma.aldahotels.es/img/ig_white.png\" alt=\"instagram\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                    <a href=\"https://es.linkedin.com/company/aldahotels\"><img src=\"https://firma.aldahotels.es/img/in_white.png\" alt=\"linked-in\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                    <a href=\"https://twitter.com/AldaHotels\"><img src=\"https://firma.aldahotels.es/img/x_white.png\" alt=\"x\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                    <br>\n"
+"                                                                    <a href=\"https://www.aldahotels.es/\" style=\"font-size:15px;color:#FFFFFF;\">aldahotels.es</a>\n"
+"                                                                </td>\n"
+"                                                            </tr>\n"
+"                                                        </tbody></table>\n"
+"                                                    </td>\n"
+"                                                </tr>\n"
+"                                            </tbody></table>\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                </tbody></table>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody></table>\n"
+"                </div>\n"
+"        "
+msgstr ""
+
+#. module: purchase_portal
+#: model:mail.template,body_html:purchase_portal.alda_picking_reception_status_email_template
+msgid ""
+"<div style=\"background-color:#ffffff;margin: 0; padding: 0; min-width: 100%;\">\n"
+"                    <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" bgcolor=\"#ffffff\">\n"
+"                        <tbody><tr>\n"
+"                            <td>\n"
+"                                <table style=\"width:650px;border: 1px solid #eeeeee; background-color:#f6f6f6;\" align=\"center\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                    <tbody><tr>\n"
+"                                        <td style=\"padding:30px;background-color:#242424;\">\n"
+"                                            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                <tbody><tr>\n"
+"                                                    <td width=\"50%\" valign=\"middle\">\n"
+"                                                        <img src=\"https://firma.aldahotels.es/img/logowhite.png\" alt=\"Alda Hotels\" style=\"width:200px;height: auto;\">\n"
+"                                                    </td>\n"
+"                                                    <td align=\"right\" valign=\"middle\" width=\"50%\" style=\"padding:0 15px;\">\n"
+"                                                        <a href=\"https://www.facebook.com/AldaHotels/\"><img src=\"https://firma.aldahotels.es/img/fb_white.png\" alt=\"facebook\" style=\"padding:5px 3px;\"></a>\n"
+"                                                        <a href=\"https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw\"><img src=\"https://firma.aldahotels.es/img/yt_white.png\" alt=\"youtube\" style=\"padding:5px 3px;\"></a>\n"
+"                                                        <a href=\"https://www.instagram.com/aldahotels/?hl=en/\"><img src=\"https://firma.aldahotels.es/img/ig_white.png\" alt=\"instagram\" style=\"padding:5px 3px;\"></a>\n"
+"                                                        <a href=\"https://es.linkedin.com/company/aldahotels\"><img src=\"https://firma.aldahotels.es/img/in_white.png\" alt=\"linked-in\" style=\"padding:5px 3px;\"></a>\n"
+"                                                        <a href=\"https://twitter.com/AldaHotels\"><img src=\"https://firma.aldahotels.es/img/x_white.png\" alt=\"x\" style=\"padding:5px 3px;\"></a>\n"
+"                                                        <br>\n"
+"                                                        <a href=\"https://www.aldahotels.es/\" style=\"font-size:15px;color:#FFFFFF;\">aldahotels.es</a>\n"
+"                                                    </td>\n"
+"                                                </tr>\n"
+"                                            </tbody></table>\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                    <tr>\n"
+"                                        <td style=\"padding:60px 30px 20px 30px;\">\n"
+"                                            <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                <tbody><tr>\n"
+"                                                    <td align=\"center\">Hola <t t-esc=\"object.partner_id.name\"></t></td>\n"
+"                                                </tr>\n"
+"                                                <tr>\n"
+"                                                    <td align=\"center\" style=\"padding:20px 0;\">\n"
+"                                                        <div style=\"width:50px;height: 5px; background-color:#242424;\"></div>\n"
+"                                                    </td>\n"
+"                                                </tr>\n"
+"                                                <tr>\n"
+"                                                    <td class=\"paragraph\" style=\"padding:20px 0 0 0;\" align=\"justify\">\n"
+"                                                        <span style=\"font-style:italic;\">\n"
+"                                                            <br>\n"
+"                                                            Enviamos un resumen de la recepción de los productos de este albarán.\n"
+"                                                            <ul>\n"
+"                                                                <t t-set=\"base_url\" t-value=\"object.get_base_url()\"></t>\n"
+"                                                                <li>\n"
+"                                                                    <strong>Número:</strong> <t t-esc=\"object.origin or object.name\"></t>\n"
+"                                                                </li>\n"
+"                                                            </ul>\n"
+"                                                            <br>\n"
+"                                                            <div style=\"margin: 0px; padding: 0px;\">\n"
+"                                                                <table width=\"100%\" style=\"color: #454748; font-size: 12px; border-collapse: collapse;\">\n"
+"                                                                  <tr style=\"border-bottom: 2px solid #dee2e6;\">\n"
+"                                                                    <td style=\"width: 150px;\">\n"
+"                                                                      <span style=\"font-weight:bold;\">Producto</span>\n"
+"                                                                    </td>\n"
+"                                                                    <td></td>\n"
+"                                                                    <td width=\"15%\" align=\"center\">\n"
+"                                                                      <span style=\"font-weight:bold;\">Cantidad pedida</span>\n"
+"                                                                    </td>\n"
+"                                                                    <td width=\"20%\" align=\"center\">\n"
+"                                                                        <span style=\"font-weight:bold;\">Cantidad recibida</span>\n"
+"                                                                      </td>\n"
+"                                                                  </tr>\n"
+"                                                                </table>\n"
+"                                                                <t t-foreach=\"object.move_ids\" t-as=\"line\">\n"
+"                                                                    <table width=\"100%\" style=\"color: #454748; font-size: 12px; border-collapse: collapse;\">\n"
+"                                                                        <t t-set=\"loop_cycle_number\" t-value=\"loop_cycle_number or 0\"></t>\n"
+"                                                                        <tr t-att-style=\"'background-color: #f2f2f2' if loop_cycle_number % 2 == 0 else 'background-color: #ffffff'\">\n"
+"                                                                          <t t-set=\"loop_cycle_number\" t-value=\"loop_cycle_number + 1\"></t>\n"
+"                                                                          <td style=\"width: 150px;\">\n"
+"                                                                            <img t-attf-src=\"/web/image/product.product/{{ line.product_id.id }}/image_128\" style=\"width: 64px; height: 64px; object-fit: contain;\" alt=\"Product image\">\n"
+"                                                                          </td>\n"
+"                                                                          <td align=\"left\" t-out=\"line.product_id.name or ''\"></td>\n"
+"                                                                          <td width=\"15%\" align=\"center\"> <t t-out=\"line.purchase_line_id.product_qty if line.purchase_line_id else line.product_qty\"></t> <t t-out=\"line.purchase_line_id.product_uom.display_name if line.purchase_line_id else line.product_uom_id.name\"></t></td>\n"
+"                                                                          <td width=\"20%\" align=\"center\"> <t t-out=\"line.purchase_line_id.qty_received if line.purchase_line_id else line.quantity_done\"></t> <t t-out=\"line.purchase_line_id.product_uom.display_name if line.purchase_line_id else line.product_uom_id.name\"></t></td>\n"
+"                                                                        </tr>\n"
+"                                                                    </table>\n"
+"                                                                </t>\n"
+"                                                            </div>\n"
+"                                                            <br>\n"
+"                                                            Saludos cordiales,\n"
+"                                                            <br>\n"
+"                                                        </span>\n"
+"                                                    </td>\n"
+"                                                </tr>\n"
+"                                                <tr>\n"
+"                                                    <td style=\"padding:30px;background-color:#242424;\">\n"
+"                                                        <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n"
+"                                                            <tbody><tr>\n"
+"                                                                <td width=\"50%\" valign=\"middle\">\n"
+"                                                                    <img src=\"https://firma.aldahotels.es/img/logowhite.png\" alt=\"Alda Hotels\" style=\"width:200px;height: auto;\">\n"
+"                                                                </td>\n"
+"                                                                <td align=\"right\" valign=\"middle\" width=\"50%\" style=\"padding:0 15px;\">\n"
+"                                                                    <a href=\"https://www.facebook.com/AldaHotels/\"><img src=\"https://firma.aldahotels.es/img/fb_white.png\" alt=\"facebook\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                    <a href=\"https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw\"><img src=\"https://firma.aldahotels.es/img/yt_white.png\" alt=\"youtube\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                    <a href=\"https://www.instagram.com/aldahotels/?hl=en/\"><img src=\"https://firma.aldahotels.es/img/ig_white.png\" alt=\"instagram\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                    <a href=\"https://es.linkedin.com/company/aldahotels\"><img src=\"https://firma.aldahotels.es/img/in_white.png\" alt=\"linked-in\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                    <a href=\"https://twitter.com/AldaHotels\"><img src=\"https://firma.aldahotels.es/img/x_white.png\" alt=\"x\" style=\"padding:5px 3px;\"></a>\n"
+"                                                                    <br>\n"
+"                                                                    <a href=\"https://www.aldahotels.es/\" style=\"font-size:15px;color:#FFFFFF;\">aldahotels.es</a>\n"
+"                                                                </td>\n"
+"                                                            </tr>\n"
+"                                                        </tbody></table>\n"
+"                                                    </td>\n"
+"                                                </tr>\n"
+"                                            </tbody></table>\n"
+"                                        </td>\n"
+"                                    </tr>\n"
+"                                </tbody></table>\n"
+"                            </td>\n"
+"                        </tr>\n"
+"                    </tbody></table>\n"
+"                </div>\n"
+"        "
+msgstr ""
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_home_menu_purchase_request
+msgid "<em>Draft purchase request</em>"
+msgstr "<em>Borrador solicitud de compra</em>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_home_menu_stock_picking
+msgid "<em>Draft stock picking</em>"
+msgstr "<em>Borrador albarán</em>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+msgid "<i class=\"fa fa-file-pdf-o\"/> Data sheet"
+msgstr "<i class=\"fa fa-file-pdf-o\"/> Ficha técnica"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_stock_picking_page
+msgid "<i class=\"fa fa-fw fa-comments\"/><b>Send message</b>"
+msgstr "<i class=\"fa fa-fw fa-comments\"/><b>Enviar mensaje</b>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.purchase_portal_my_purchase_orders
+msgid ""
+"<i class=\"fa fa-fw fa-file-text\" role=\"img\" aria-label=\"Waiting for Delivery\" title=\"Waiting for Delivery\"/>\n"
+"                <span class=\"d-none d-md-inline\"> Waiting for Delivery</span>"
+msgstr ""
+"<i class=\"fa fa-fw fa-file-text\" role=\"img\" aria-label=\"Esperando entrega\" title=\"Esperando entrega\"/>\n"
+"                <span class=\"d-none d-md-inline\"> Esperando entrega</span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "<option value=\"all\">All categories</option>"
+msgstr "<option value=\"all\">Todas las categorías</option>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "<option value=\"all\">All sellers</option>"
+msgstr "<option value=\"all\">Todos</option>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.view_purchase_request_line_make_purchase_order_form
+msgid ""
+"<small>There are multiple suppliers. More than one purchase order will be "
+"created.</small>"
+msgstr "<small>Hay múltiples proveedores. Se creará más de un pedido.</small>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid ""
+"<span class=\"badge rounded-pill text-bg-info\"><i class=\"fa fa-fw fa-"
+"clock-o\" aria-label=\"Draft\" title=\"Draft\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Draft</span></span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-info\"><i class=\"fa fa-fw fa-"
+"clock-o\" aria-label=\"Draft\" title=\"Draft\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Borrador</span></span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid ""
+"<span class=\"badge rounded-pill text-bg-primary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"Confirmed\" title=\"Confirmed\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Confirmed</span></span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-primary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"Confirmado\" title=\"Confirmado\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Confirmado</span></span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+msgid ""
+"<span class=\"badge rounded-pill text-bg-primary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"In Progress\" title=\"In Progress\" role=\"img\"/><span"
+" class=\"d-none d-md-inline\"> In Progress</span></span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-primary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"En Progreso\" title=\"En Progreso\" role=\"img\"/><span"
+" class=\"d-none d-md-inline\"> En Progreso</span></span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_saved_carts
+msgid ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-cart-"
+"arrow-down\"/> Add to cart and delete</span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-cart-"
+"arrow-down\"/> Utilizar y borrar</span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_saved_carts
+msgid ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-cart-"
+"plus\"/> Add to cart</span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-cart-"
+"plus\"/> Añadir al carro</span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+msgid ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"Approved\" title=\"Approved\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Approved</span></span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"Aprobado\" title=\"Aprobado\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Aprobado</span></span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"Assigned\" title=\"Assigned\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Assigned</span></span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"Preparado\" title=\"Preparado\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Preparado</span></span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+msgid ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"To approve\" title=\"To approve\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> To approve</span></span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"Para aprobar\" title=\"Para aprobar\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Para aprobar</span></span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"Waiting\" title=\"Waiting\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Waiting</span></span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"En espera\" title=\"En espera\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> En espera</span></span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_saved_carts
+msgid ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-"
+"trash-o\"/> Delete</span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-secondary\"><i class=\"fa fa-"
+"trash-o\"/> Borrar</span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid ""
+"<span class=\"badge rounded-pill text-bg-success\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"Done\" title=\"Done\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Done</span></span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-success\"><i class=\"fa fa-fw fa-"
+"check\" aria-label=\"Hecho\" title=\"Hecho\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Hecho</span></span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid ""
+"<span class=\"badge rounded-pill text-bg-warning\"><i class=\"fa fa-fw fa-"
+"remove\" aria-label=\"Cancel\" title=\"Cancel\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Cancel</span></span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-warning\"><i class=\"fa fa-fw fa-"
+"remove\" aria-label=\"Cancelado\" title=\"Cancelado\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Cancelado</span></span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+msgid ""
+"<span class=\"badge rounded-pill text-bg-warning\"><i class=\"fa fa-fw fa-"
+"remove\" aria-label=\"Rejected\" title=\"Rejected\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Rejected</span></span>"
+msgstr ""
+"<span class=\"badge rounded-pill text-bg-warning\"><i class=\"fa fa-fw fa-"
+"remove\" aria-label=\"Rechazado\" title=\"Rechazado\" role=\"img\"/><span "
+"class=\"d-none d-md-inline\"> Rechazado</span></span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_info
+msgid ""
+"<span class=\"small text-info orders_label_text_align\"><i class=\"fa fa-"
+"cart-arrow-down\"/> Add to cart and delete</span>"
+msgstr ""
+"<span class=\"small text-info orders_label_text_align\"><i class=\"fa fa-"
+"cart-arrow-down\"/> Utilizar y borrar</span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_info
+msgid ""
+"<span class=\"small text-info orders_label_text_align\"><i class=\"fa fa-"
+"cart-plus\"/> Add to cart</span>"
+msgstr ""
+"<span class=\"small text-info orders_label_text_align\"><i class=\"fa fa-"
+"cart-plus\"/> Utilizar</span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_saved_items
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_info
+msgid ""
+"<span class=\"small text-info orders_label_text_align\"><i class=\"fa fa-"
+"trash-o\"/> Delete</span>"
+msgstr ""
+"<span class=\"small text-info orders_label_text_align\"><i class=\"fa fa-"
+"trash-o\"/> Borrar</span>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "<span>Delete </span><i class=\"fa fa-trash-o\" aria-hidden=\"\"/>"
+msgstr "<span>Borrar </span><i class=\"fa fa-trash-o\" aria-hidden=\"\"/>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+msgid "<span>Save </span><i class=\"fa fa-floppy-o\" aria-hidden=\"\"/>"
+msgstr "<span>Guardar </span><i class=\"fa fa-floppy-o\" aria-hidden=\"\"/>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "<span>Save Cart </span><i class=\"fa fa-floppy-o\" aria-hidden=\"\"/>"
+msgstr "<span>Guardar Carrito </span><i class=\"fa fa-floppy-o\" aria-hidden=\"\"/>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_stock_picking_page
+msgid ""
+"<strong class=\"text-muted\">\n"
+"                                    Assigned to\n"
+"                                </strong>"
+msgstr ""
+"<strong class=\"text-muted\">\n"
+"                                    Asignado a\n"
+"                                </strong>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_stock_picking_page
+msgid ""
+"<strong class=\"text-muted\">\n"
+"                                    Receive from\n"
+"                                </strong>"
+msgstr ""
+"<strong class=\"text-muted\">\n"
+"                                    Recibir de\n"
+"                                </strong>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+msgid ""
+"<strong class=\"text-muted\">\n"
+"                                    Requested by\n"
+"                                </strong>"
+msgstr ""
+"<strong class=\"text-muted\">\n"
+"                                    Solicitado por\n"
+"                                </strong>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_page
+msgid "<strong>Customer:</strong>"
+msgstr "<strong>Cliente:</strong>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_page
+msgid "<strong>Saved cart date</strong>"
+msgstr "<strong>Fecha de guardado</strong>"
+
+#. module: purchase_portal
+#: model:ir.model.fields,help:purchase_portal.field_stock_backorder_confirmation__backorder_message
+msgid "A line will be added for each product not received"
+msgstr "Una línea será añadida por cada producto no recibido"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request__access_warning
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__access_warning
+#: model:ir.model.fields,field_description:purchase_portal.field_stock_picking__access_warning
+msgid "Access warning"
+msgstr "Aviso de acceso"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+#, python-format
+msgid "Active"
+msgstr "Activo"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.purchase_request_product_table
+msgid "Add"
+msgstr "Añadir"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.pms_property_views_form
+msgid "Add all seller's products"
+msgstr "Añadir todos los productos de los vendedores"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.pms_property_views_form
+msgid "Add sellers and products"
+msgstr "Añadir vendedores y productos"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__add_to_cart_url
+msgid "Add to cart URL"
+msgstr "URL añadir al carrito"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__add_to_cart_and_delete_url
+msgid "Add to cart and delete URL"
+msgstr "URL añadir al carrito y borrar"
+
+#. module: purchase_portal
+#: model:mail.template,name:purchase_portal.alda_purchase_pos
+msgid "Alda Purchase Order: Send PO"
+msgstr "Alda Orden de Compra: Enviar OC"
+
+#. module: purchase_portal
+#: model:mail.template,name:purchase_portal.alda_purchase_rfq
+msgid "Alda Purchase Order: Send RFQ"
+msgstr "Alda Orden de Compra: Enviar Solicitud de Presupuesto"
+
+#. module: purchase_portal
+#: model:mail.template,name:purchase_portal.alda_purchase_remainder
+msgid "Alda Purchase Order: Vendor Remainder"
+msgstr "Alda Orden de Compra: Recordatorio al proveedor"
+
+#. module: purchase_portal
+#: model:mail.template,name:purchase_portal.alda_purchase_request_validation
+msgid "Alda Purchase Request: New validation request"
+msgstr "Alda Solicitud de Compra: Nueva solicitud de validación"
+
+#. module: purchase_portal
+#: model:mail.template,name:purchase_portal.alda_picking_reception_status_email_template
+msgid "Alda picking: Reception status"
+msgstr "Alda albarán: Estado de recepción"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/purchase.py:0
+#, python-format
+msgid "All"
+msgstr "Todos"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/wizard/import_supplier_data_wizard.py:0
+#, python-format
+msgid "All supplier {} products have been updated successfully"
+msgstr "Todos los productos del proveedor {} han sido actualizados correctamente"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_channel_wubook_pms_room_type__purchase_property_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_pms_room_type__purchase_property_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_product_product__purchase_property_ids
+msgid "Allowed in properties"
+msgstr "Permitido en propiedades"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_channel_wubook_pms_property_availability__product_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_channel_wubook_pms_property_availability__product_seller_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_pms_property__product_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_pms_property__product_seller_ids
+msgid "Allowed products"
+msgstr "Productos permitidos"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__product_supplier_ids
+msgid "Allowed products by seller"
+msgstr "Productos permitidos por vendedor"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "Assigned"
+msgstr "Preparado"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_stock_backorder_confirmation
+msgid "Backorder Confirmation"
+msgstr "Confirmación de entrega parcial"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__supplier_file_name
+msgid "CSV File Name"
+msgstr "Nombre del fichero CSV"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.import_supplier_data_wizard_form
+#: model_terms:ir.ui.view,arch_db:purchase_portal.supplier_products_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/purchase.py:0
+#, python-format
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__cart_id
+msgid "Cart"
+msgstr "Carrito"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+msgid "Category"
+msgstr "Categoría"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.import_supplier_data_wizard_form
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_report__commercial_partner_id
+msgid "Comercial Partner"
+msgstr "Socio comercial"
+
+#. module: purchase_portal
+#: model:ir.model.fields,help:purchase_portal.field_purchase_report__commercial_partner_id
+msgid "Comercial partner of the supplier"
+msgstr "Socio comercial del proveedor"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__supplier_commercial_ids
+msgid "Commercial Supplier"
+msgstr "Comercial del proveedor"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.view_purchase_order_search
+msgid "Commercial Vendor"
+msgstr "Proveedor comercial"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.supplier_products_wizard
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: purchase_portal
+#: model:mail.template,subject:purchase_portal.alda_picking_reception_status_email_template
+msgid ""
+"Confirmación recepción del albarán (Ref {{ object.origin or object.name or "
+"'n/a' }}) - {{ object.company_id.name}}"
+msgstr ""
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_res_partner
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_stock_picking_page
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "Create"
+msgstr "Crear"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__create_uid
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__create_uid
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__create_uid
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__create_date
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__create_date
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__create_date
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: purchase_portal
+#: model:ir.model.fields,help:purchase_portal.field_purchase_request__access_url
+#: model:ir.model.fields,help:purchase_portal.field_purchase_request_saved_cart__access_url
+#: model:ir.model.fields,help:purchase_portal.field_stock_picking__access_url
+msgid "Customer Portal URL"
+msgstr "URL portal cliente"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_saved_carts
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+#, python-format
+msgid "Date"
+msgstr "Fecha"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__delete_url
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__delete_url
+msgid "Delete URL"
+msgstr "URL borrar"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "Delete request"
+msgstr "Borrar solicitud"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__display_name
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__display_name
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__display_name
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_stock_picking_page
+#, python-format
+msgid "Done"
+msgstr "Hecho"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+msgid "Draft purchase request"
+msgstr "Borrador solicitud de compra"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid "Draft stock picking"
+msgstr "Borrador albarán"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/wizard/purchase_request_line_make_purchase_order.py:0
+#, python-format
+msgid "Enter a positive quantity."
+msgstr "Introduce un valor positivo."
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.purchase_order_form
+msgid "Force Confirm Order"
+msgstr "Forzar confirmar"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/stock_picking.py:0
+#, python-format
+msgid "Hi {}, <br/> {} {}"
+msgstr "Hola {}, <br/> {} {}"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_res_users__hide_menus
+msgid "Hide menus"
+msgstr "Ocultar menús"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_stock_picking_page
+msgid "History"
+msgstr "Historial"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_stock_picking__property_id
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__hotel_id
+msgid "Hotel"
+msgstr "Holtel"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__id
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__id
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__id
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.import_supplier_data_wizard_form
+msgid "Import data"
+msgstr "Importar datos"
+
+#. module: purchase_portal
+#: model:ir.actions.act_window,name:purchase_portal.import_supplier_data_wizard_action
+#: model:ir.ui.menu,name:purchase_portal.import_supplier_data_wizard_menu
+msgid "Import suppliers CSV"
+msgstr "Importar CSV proveedores"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__imported
+msgid "Imported"
+msgstr "Importado"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "In Progress"
+msgstr "En progreso"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "Inactive"
+msgstr "Inactivo"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__item_ids
+msgid "Items"
+msgstr "Elementos"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard____last_update
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart____last_update
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item____last_update
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__write_uid
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__write_uid
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__write_uid
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por último por"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__write_date
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__write_date
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__write_date
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__write_date
+msgid "Last Updated on"
+msgstr "Actualizado por última vez el"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/purchase_request.py:0
+#, python-format
+msgid "Line deleted by {user}: <strong> {product}</strong>"
+msgstr "Línea borrada por {user}: <strong> {product}</strong>"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/purchase_request.py:0
+#, python-format
+msgid ""
+"Line edited by {user}: <strong>{product} ({old_quantity} -> "
+"{quantity})</strong>"
+msgstr ""
+"Línea editada por {user}: <strong>{product} ({old_quantity} -> "
+"{quantity})</strong>"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/saved_cart_json.py:0
+#: code:addons/purchase_portal/controllers/saved_cart_json.py:0
+#: code:addons/purchase_portal/controllers/saved_cart_json.py:0
+#: code:addons/purchase_portal/controllers/saved_cart_json.py:0
+#: code:addons/purchase_portal/controllers/stock_picking_json.py:0
+#: code:addons/purchase_portal/controllers/stock_picking_json.py:0
+#, python-format
+msgid "Line not found"
+msgstr "Línea no encontrada"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/purchase.py:0
+#, python-format
+msgid "Locked"
+msgstr "Bloqueada"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_stock_backorder_confirmation__send_mail_to_seller
+msgid "Mail to seller"
+msgstr "Mail a proveedor"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_stock_backorder_confirmation__backorder_message
+msgid "Mail to seller content"
+msgstr "Contenido mail a proveedor"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_channel_wubook_pms_property_availability__min_purchase_amount
+#: model:ir.model.fields,field_description:purchase_portal.field_pms_property__min_purchase_amount
+#: model:ir.model.fields,field_description:purchase_portal.field_res_partner__min_purchase_amount
+#: model:ir.model.fields,field_description:purchase_portal.field_res_users__min_purchase_amount
+msgid "Minimum purchase amount"
+msgstr "Importe mínimo de compra"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.purchase_request_product_table
+msgid "Minimum purchase import:"
+msgstr "Importe mínimo de compra:"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/prequest_json.py:0
+#, python-format
+msgid "Missing parameters"
+msgstr "Parámetros que faltan"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_line_make_purchase_order__multiple_suppliers
+msgid "Multiple suppliers"
+msgstr "Múltiples proveedores"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__name
+#: model_terms:ir.ui.view,arch_db:purchase_portal.view_purchase_request_saved_cart_search
+#, python-format
+msgid "Name"
+msgstr "Descripción"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/purchase_request.py:0
+#, python-format
+msgid "New line added by {user}: <strong> {product} ({quantity})</strong>"
+msgstr "Nueva línea añadida por {user}: <strong> {product} ({quantity})</strong>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_home_purchase_request
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "New purchase request"
+msgstr "Nueva solicitud de compra"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/prequest_json.py:0
+#, python-format
+msgid "No purchase_request or wrong state"
+msgstr "No hay solicitud de compra o estado incorrecto"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/purchase_request.py:0
+#, python-format
+msgid "No supplier found for purchase request lines %s"
+msgstr "No se ha encontrado proveedor para las líneas de solicitud de compra %s"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "On Wait"
+msgstr "En espera"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_saved_carts
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_page
+msgid "Options"
+msgstr "Opciones"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+#, python-format
+msgid "Origin"
+msgstr "Origen"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_stock_picking_page
+msgid "Original Quantity"
+msgstr "Cantidad original"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_stock_move__product_original_qty
+msgid "Original quantity"
+msgstr "Cantidad original"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_stock_move__product_original_qty_uom
+msgid "Original quantity uom"
+msgstr "Unidad de medida cantidad original"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__partner_id
+msgid "Partner"
+msgstr "Cliente"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/stock_picking_json.py:0
+#: code:addons/purchase_portal/controllers/stock_picking_json.py:0
+#, python-format
+msgid "Picking not found"
+msgstr "Albarán no encontrado"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "Configuración del TPV"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Pedidos del TPV"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_pos_session
+msgid "Point of Sale Session"
+msgstr "Sesión TPV"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request__access_url
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__access_url
+#: model:ir.model.fields,field_description:purchase_portal.field_stock_picking__access_url
+msgid "Portal Access URL"
+msgstr "URL acceso portal"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+msgid "Price"
+msgstr "Precio"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__product_id
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.purchase_request_details_table
+#: model_terms:ir.ui.view,arch_db:purchase_portal.purchase_request_product_table
+#: model_terms:ir.ui.view,arch_db:purchase_portal.stock_picking_lines_table
+msgid "Product"
+msgstr "Producto"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+msgid "Product #"
+msgstr "Producto #"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__product_errors
+msgid "Product Errors"
+msgstr ""
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__product_qty
+msgid "Product Quantity"
+msgstr "Cantidad"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart_item__product_uom_id
+msgid "Product Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_product_product
+msgid "Product Variant"
+msgstr "Variante de producto"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/stock_picking.py:0
+#, python-format
+msgid "Product: <b>{}</b>, quantity: <b>{}</b><br/>"
+msgstr "Producto: <b>{}</b>, cantidad: <b>{}</b><br/>"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__product_ids
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_home_purchase_request
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_stock_picking_page
+msgid "Products"
+msgstr "Productos"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_pms_property
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_order__property_id
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request__property_id
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_line__property_id
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_line_make_purchase_order__property_id
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__property_id
+#: model_terms:ir.ui.view,arch_db:purchase_portal.purchase_request_line_search
+msgid "Property"
+msgstr "Hotel"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/purchase.py:0
+#: model:ir.model,name:purchase_portal.model_purchase_order
+#, python-format
+msgid "Purchase Order"
+msgstr "Pedido de compra"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.pms_property_views_form
+#: model_terms:ir.ui.view,arch_db:purchase_portal.product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:purchase_portal.view_users_form_token_access
+msgid "Purchase Portal"
+msgstr "Portal de compras"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_purchase_report
+msgid "Purchase Report"
+msgstr "Informe de compra"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_purchase_request
+msgid "Purchase Request"
+msgstr "Solicitud de Compra"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_purchase_request_line
+msgid "Purchase Request Line"
+msgstr "Línea de solicitud de compra"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_purchase_request_line_make_purchase_order
+msgid "Purchase Request Line Make Purchase Order"
+msgstr "Línea de solicitud de compra para hacer pedido"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+msgid "Purchase request #"
+msgstr "Solicitud de compra #"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_home_menu_purchase_request
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_home_purchase_request
+msgid "Purchase requests"
+msgstr "Solicitudes de compra"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_stock_picking_page
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/wizard/purchase_request_line_make_purchase_order.py:0
+#, python-format
+msgid "RFQ"
+msgstr ""
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+msgid "Ref."
+msgstr ""
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+#, python-format
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.pms_property_views_form
+msgid "Remove Products Not In Sellers"
+msgstr "Eliminar productos que no están en los vendedores"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "Request validation"
+msgstr "Solicitar validación"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "Restart validation"
+msgstr "Reiniciar validación"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+msgid "Save it as a recurrent purchase.<br/>"
+msgstr "Guardar carrito. <br/>"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_purchase_request_page
+msgid "Save request"
+msgstr "Guardar solicitud"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_saved_carts
+msgid "Saved Cart #"
+msgstr "Carrito guardado #"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_saved_cart_info
+msgid "Saved Cart -"
+msgstr "Carrito guardado -"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_channel_wubook_pms_property_availability__saved_cart_count
+#: model:ir.model.fields,field_description:purchase_portal.field_pms_property__saved_cart_count
+#: model:ir.model.fields,field_description:purchase_portal.field_res_partner__saved_cart_count
+#: model:ir.model.fields,field_description:purchase_portal.field_res_users__saved_cart_count
+msgid "Saved Cart Count"
+msgstr "Número de carritos guardados"
+
+#. module: purchase_portal
+#: model:ir.actions.act_window,name:purchase_portal.act_res_partner_2_saved_cart
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_home_menu_saved_carts
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_home_saved_carts
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_saved_carts
+msgid "Saved Carts"
+msgstr "Carritos guardados"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.view_purchase_request_saved_cart_form
+msgid "Saved cart"
+msgstr "Carritos guardados"
+
+#. module: purchase_portal
+#: model:ir.actions.act_window,name:purchase_portal.action_purchase_request_saved_cart_group
+#: model:ir.model.fields,field_description:purchase_portal.field_channel_wubook_pms_property_availability__saved_cart_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_pms_property__saved_cart_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_res_partner__saved_cart_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_res_users__saved_cart_ids
+#: model:ir.ui.menu,name:purchase_portal.menu_purchase_request_saved_cart
+#: model_terms:ir.ui.view,arch_db:purchase_portal.view_partner_form
+#: model_terms:ir.ui.view,arch_db:purchase_portal.view_purchase_request_saved_cart_search
+#: model_terms:ir.ui.view,arch_db:purchase_portal.view_purchase_request_saved_cart_tree
+msgid "Saved carts"
+msgstr "Carritos guardados"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "Search in All"
+msgstr "Buscar en todo"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "Search in Name"
+msgstr "Buscar por nombre"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "Search in reference"
+msgstr "Buscar por referencia"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "Search..."
+msgstr "Buscar..."
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request__access_token
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__access_token
+#: model:ir.model.fields,field_description:purchase_portal.field_stock_picking__access_token
+msgid "Security Token"
+msgstr "Token de seguridad"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__seller_ids
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+msgid "Seller"
+msgstr "Proveedor"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_product_supplierinfo__seller_children_ids
+msgid "Seller children"
+msgstr "Hijos del proveedor"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.view_picking_form
+msgid "Send confirmation email"
+msgstr "Enviar email de confirmación"
+
+#. module: purchase_portal
+#: model:ir.actions.server,name:purchase_portal.ir_cron_assets_generator_ir_actions_server
+#: model:ir.cron,cron_name:purchase_portal.ir_cron_assets_generator
+msgid "Set to done completed PR"
+msgstr "Marcar Solicitud de Compra completada como hecha"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "Status"
+msgstr "Estado"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de stock"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid "Stock picking #"
+msgstr "Albarán #"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_home_menu_stock_picking
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_home_stock_picking
+msgid "Stock pickings"
+msgstr "Albaranes"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_line__suggested_supplier_id
+msgid "Suggested Supplier"
+msgstr "Proveedor sugerido"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__supplier_id
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid "Supplier"
+msgstr "Proveedor"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_import_supplier_data_wizard__supplier_file
+msgid "Supplier File"
+msgstr "Archivo proveedor"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_product_supplierinfo
+msgid "Supplier Pricelist"
+msgstr "Tarifa de proveedor"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.supplier_products_wizard
+msgid "Supplier Products"
+msgstr "Productos del proveedor"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_supplier_products_wizard
+msgid "Supplier Products Wizard"
+msgstr "Asistente de proveedores y productos"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_product_supplierinfo__supplier_stock
+msgid "Supplier stock"
+msgstr "Stock proveedor"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_supplier_products_wizard__supplier_ids
+msgid "Suppliers"
+msgstr "Proveedores"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/wizard/stock_backorder_confirmation_views.py:0
+#, python-format
+msgid "The following products didn't arrive:"
+msgstr "Los siguientes productos no han sido recibidos."
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/prequest_json.py:0
+#, python-format
+msgid "The minimum amount for %s is %s%s. Current amount %s%s.<br/>"
+msgstr "La cantidad mínima para %s es %s%s. Cantidad actual %s%s.<br/>"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/purchase_order.py:0
+#, python-format
+msgid "The minimum purchase amount for {} is {}"
+msgstr "La cantidad mínima de compra para {} es {}"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/purchase_request.py:0
+#: code:addons/purchase_portal/models/purchase_request.py:0
+#, python-format
+msgid "The minimum quantity for this product is %s"
+msgstr "La cantidad mínima para este producto es %s"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/prequest_json.py:0
+#, python-format
+msgid "The quantity for %s must be greater than 0"
+msgstr "La cantidad para %s debe ser mayor que 0"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+msgid "There are currently no product_products and payments for your account."
+msgstr "No hay productos."
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+msgid ""
+"There are currently no purchase_requests and payments for your account."
+msgstr "No existen pagos o solicitudes de compra para tu cuenta."
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid "There are currently no stock_pickings and payments for your account."
+msgstr "No existen pagos o solicitudes de compra para tu cuenta."
+
+#. module: purchase_portal
+#: model_terms:ir.actions.act_window,help:purchase_portal.act_res_partner_2_saved_cart
+msgid "There are no carts created by this partner yet."
+msgstr "Todavía no hay carritos guardados."
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/wizard/import_supplier_data_wizard.py:0
+#, python-format
+msgid "There are no reference or stock row, check the file."
+msgstr "No hay columna de referencia o stock, comprueba el archivo."
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/purchase_request.py:0
+#: code:addons/purchase_portal/models/purchase_request.py:0
+#, python-format
+msgid "There are no sellers allowed for this request."
+msgstr "No hay proveedores permitidos para esta solicitud."
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/purchase_request.py:0
+#, python-format
+msgid "There are no sellers for this product in the current company."
+msgstr "No hay proveedores para este producto en la compañía actual."
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/wizard/import_supplier_data_wizard.py:0
+#, python-format
+msgid ""
+"This products could not be found:\n"
+"\n"
+"\t- {}"
+msgstr ""
+"Estos productos no han podido ser encontrados:\n"
+"\n"
+"\t- {}"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.import_supplier_data_wizard_form
+msgid ""
+"This wizard allow to import a csv file with the stock of the products.<br/>\n"
+"                    The csv file must contain the columns reference and stock, being reference the supplier code for the product."
+msgstr ""
+"Este asistente permite importar un archivo CSV con el stock de los productos.<br/>\n"
+"                    El archivo CSV debe contener las columnas referencia y stock, siendo la referencia el código del proveedor para el producto."
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_stock_picking
+msgid "Transfer"
+msgstr "Albarán"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_new_purchase_request_page
+msgid "UOM"
+msgstr "UdM"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_res_users
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_request_saved_cart__user_id
+msgid "User"
+msgstr "Usuario"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_res_users__banned_product_ids
+msgid "User banned products"
+msgstr "Productos prohibidos para el usuario"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_stock_picking_page
+msgid "Validate"
+msgstr "Validar"
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.purchase_portal_my_purchase_orders
+msgid "Vendor"
+msgstr "Proveedor"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_channel_wubook_pms_property_availability__seller_commercial_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_channel_wubook_pms_property_availability__seller_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_pms_property__seller_commercial_ids
+#: model:ir.model.fields,field_description:purchase_portal.field_pms_property__seller_ids
+msgid "Vendors allowed in this property"
+msgstr "Proveedores permitidos en este hotel"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_purchase_order__wating_delivery
+msgid "Waiting Delivery"
+msgstr "Esperando entrega"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "Waiting for other operation"
+msgstr "Esperando otra operación"
+
+#. module: purchase_portal
+#: model:ir.model.fields,field_description:purchase_portal.field_channel_wubook_pms_property_availability__wharehouse_id
+#: model:ir.model.fields,field_description:purchase_portal.field_pms_property__wharehouse_id
+msgid "Warehouse"
+msgstr "Almacén"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/purchase.py:0
+#, python-format
+msgid "Wating for Delivery"
+msgstr "Esperando entrega"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/models/pos_order.py:0
+#, python-format
+msgid "YOU CAN'T CREATE RESCUE SESSIONS"
+msgstr "NO PUEDES CREAR SESIONES DE RESCATE"
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/controllers/main.py:0
+#, python-format
+msgid "You can only delete draft purchase requests."
+msgstr "Sólo puedes borrar solicitudes de compra en borrador."
+
+#. module: purchase_portal
+#. odoo-python
+#: code:addons/purchase_portal/wizard/purchase_request_line_make_purchase_order.py:0
+#, python-format
+msgid "You can't select lines from different properties"
+msgstr "No puedes seleccionar líneas de diferentes propiedades"
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_import_supplier_data_wizard
+msgid "import.supplier.data.wizard"
+msgstr ""
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_product_product
+msgid "product_products"
+msgstr ""
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_purchase_request_saved_cart
+msgid "purchase.request.saved.cart"
+msgstr ""
+
+#. module: purchase_portal
+#: model:ir.model,name:purchase_portal.model_purchase_request_saved_cart_item
+msgid "purchase.request.saved.cart.item"
+msgstr ""
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_purchase_requests
+msgid "purchase_requests"
+msgstr ""
+
+#. module: purchase_portal
+#: model_terms:ir.ui.view,arch_db:purchase_portal.portal_my_stock_pickings
+msgid "stock_pickings"
+msgstr ""
+
+#. module: purchase_portal
+#: model:mail.template,subject:purchase_portal.alda_purchase_request_validation
+msgid ""
+"{{ object.property_id.name}}: Solicitud de compra (Ref {{ object.name or "
+"'n/a' }}) - {{ object.company_id.name}}"
+msgstr ""

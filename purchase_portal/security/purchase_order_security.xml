@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <delete model="ir.rule" id="purchase.portal_purchase_order_line_rule"/>
+    <delete model="ir.rule" id="purchase.portal_purchase_order_user_rule"/>
+</odoo>

@@ -58,15 +58,16 @@ class KellysWizard(models.TransientModel):
     pms_property_id = fields.Many2one(
         "pms.property",
         string="Property",
-        default=lambda self: self.env.user.get_active_property_ids()[0],
+        default=lambda self: self.env.user.pms_property_id.id or False,
     )
 
     def calculate_report(self):
         self.habitaciones = self.calculalimpiar(self.date_start)
         return
 
-    def calculalimpiar(self):
-        fechalimpieza = date.today()
+    def calculalimpiar(self, fechalimpieza=False):
+        if not fechalimpieza:
+            fechalimpieza = date.today()
         grids = self.env["pms.room"].search(
             [("pms_property_id", "=", self.pms_property_id.id)],
             order="sequence ASC",
@@ -209,7 +210,7 @@ class KellysWizard(models.TransientModel):
 
         return {
             "xls_filename": "Kellys_%s_%s.xlsx" % (pms_property.name, self.date_start),
-            "xls_binary": base64.encodestring(file_data.read()),
+            "xls_binary": base64.encodebytes(file_data.read()),
         }
 
     def excel_rooms_report(self):

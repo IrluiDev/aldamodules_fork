@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <delete model="ir.rule" id="sale_stock.stock_picking_rule_portal"/>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Saved carts model rules for portal users -->
+    <record id="saved_cart_rule_portal" model="ir.rule">
+        <field name="name">Saved cart portal users</field>
+        <field name="model_id" ref="model_purchase_request_saved_cart"/>
+        <field name="domain_force">[('partner_id', 'child_of', [user.partner_id.commercial_partner_id.id])]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+    </record>
+
+    <record id="saved_cart_item_rule_portal" model="ir.rule">
+        <field name="name">Saved cart item portal users</field>
+        <field name="model_id" ref="model_purchase_request_saved_cart_item"/>
+        <field name="domain_force">[('cart_id.partner_id', 'child_of', [user.partner_id.commercial_partner_id.id])]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+    </record>
+</odoo>

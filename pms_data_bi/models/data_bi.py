@@ -91,8 +91,13 @@ class DataBi(models.Model):
     @api.model
     def calc_hoteles(self, hotelsdata):
         if hotelsdata != [0]:
-            hotels = self.env["pms.property"].search([("id", "in", hotelsdata), ("status_send_property", "=", True)])
-        else: hotels = self.env["pms.property"].search([("status_send_property", "=", True)])
+            hotels = self.env["pms.property"].search(
+                [("id", "in", hotelsdata), ("status_send_property", "=", True)]
+            )
+        else:
+            hotels = self.env["pms.property"].search(
+                [("status_send_property", "=", True)]
+            )
         return hotels
 
     @api.model
@@ -116,7 +121,7 @@ class DataBi(models.Model):
 
     @api.model
     def export_data_bi(self, archivo=0, default_property=[0], fechafoto=False):
-        u"""Prepare a Json Objet to export data for MyDataBI.
+        """Prepare a Json Objet to export data for MyDataBI.
 
         Generate a dicctionary to by send in JSON
         archivo = response file type
@@ -280,7 +285,7 @@ class DataBi(models.Model):
         )
         # _logger.info("DataBi: Calculating %s Channels", str(len(channels)))
         dic_canal.append(
-            {"ID_Hotel": hotels[0].id, "ID_Canal": 0, "Descripción": u"Ninguno"}
+            {"ID_Hotel": hotels[0].id, "ID_Canal": 0, "Descripción": "Ninguno"}
         )
         for channel in channels:
             dic_canal.append(
@@ -652,7 +657,7 @@ class DataBi(models.Model):
             {
                 "ID_Hotel": hotels[0].id,
                 "ID_Regimen": 0,
-                "Descripción": u"Sin régimen",
+                "Descripción": "Sin régimen",
             }
         )
         for board_service in board_services:
@@ -776,14 +781,14 @@ class DataBi(models.Model):
             {
                 "ID_Hotel": hotels[0].id,
                 "ID_Motivo_Bloqueo": "B0",
-                "Descripción": u"Ninguno",
+                "Descripción": "Ninguno",
             }
         )
         dic_moti_bloq.append(
             {
                 "ID_Hotel": hotels[0].id,
                 "ID_Motivo_Bloqueo": "ST",
-                "Descripción": u"Staff",
+                "Descripción": "Staff",
             }
         )
         for linea in lineas:
@@ -835,7 +840,7 @@ class DataBi(models.Model):
         )
         # _logger.info("DataBi: Calculating %s Operators", str(len(lineas)))
         dic_clientes.append(
-            {"ID_Hotel": hotels[0].id, "ID_Cliente": 0, "Descripción": u"Ninguno"}
+            {"ID_Hotel": hotels[0].id, "ID_Cliente": 0, "Descripción": "Ninguno"}
         )
         for linea in lineas:
             dic_clientes.append(
@@ -1081,10 +1086,10 @@ class DataBi(models.Model):
 
     @api.model
     def data_bi_ftp_general(self):
-        """ send DataBI general data to ftp server """
+        """send DataBI general data to ftp server"""
         _logger.info("Exporting FTP general DataBI")
         self.data_bi_ftp_write(
-            self.export_general_data(), "general_data_v3", "MaestraV3/"
+            self.export_general_data(), self.env.user.maestro_ftp_bi , "MaestraV3/"
         )
         return
 
@@ -1096,8 +1101,10 @@ class DataBi(models.Model):
         for all not set or default_property = [0]
         """
         _logger.info("Exporting FTP data DataBI")
-        #propertys = self.env["pms.property"].search([])
-        propertys = self.env["pms.property"].search([("status_send_property", "=", True)])
+        # propertys = self.env["pms.property"].search([])
+        propertys = self.env["pms.property"].search(
+            [("status_send_property", "=", True)]
+        )
         for prop in propertys:
             if (prop.id in default_property) or default_property == [0]:
                 self.data_bi_ftp_one(prop, fechafoto)
@@ -1106,7 +1113,7 @@ class DataBi(models.Model):
 
     @api.model
     def data_bi_ftp_one(self, prop, fechafoto):
-        """ send 1 DataBI to ftp server """
+        """send 1 DataBI to ftp server"""
         data = json.dumps(
             self.export_all(prop, self.calc_date_limit(fechafoto)), ensure_ascii=False
         )

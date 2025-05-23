@@ -18,7 +18,7 @@ class InheritResCompany(models.Model):
 
     status_send_property = fields.Boolean(
         "Send property DataBi",
-        default = True,
-        help = "the condition of property that must be met \
-            for it to be shared."
+        default=True,
+        help="the condition of property that must be met \
+            for it to be shared.",
     )

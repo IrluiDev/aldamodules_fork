@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="product_normal_form_view" model="ir.ui.view">
+        <field name="name">product.normal.form.view.purchase.portal.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Purchase Portal" name="purchase_portal">
+                    <field name="purchase_property_ids" widget="many2many"/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

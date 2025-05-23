@@ -19,6 +19,7 @@
                             name="pass_ftp_bi"
                             password="True"
                         />
+                        <field string="FTP Maestro name" name="maestro_ftp_bi" />
                     </group>
                     <group name="ftp_test">
                         <div class="o_row">

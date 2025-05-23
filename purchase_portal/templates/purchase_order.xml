@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="purchase_portal_my_purchase_orders" inherit_id="purchase.portal_my_purchase_orders">
+        <xpath expr="//thead/tr/th[1]" position="after">
+            <th>Vendor</th>
+        </xpath>
+        <xpath expr="//thead/following-sibling::t/tr/td[3]" position="inside">
+            <span t-if="order.wating_delivery" class="badge rounded-pill text-bg-warning">
+                <i class="fa fa-fw fa-file-text" role="img" aria-label="Waiting for Delivery" title="Waiting for Delivery"></i>
+                <span class="d-none d-md-inline"> Waiting for Delivery</span>
+            </span>
+        </xpath>
+        <xpath expr="//thead/following-sibling::t/tr/td[1]" position="after">
+            <td><t t-esc="order.partner_id.name"/></td>
+        </xpath>
+    </template>
+</odoo>

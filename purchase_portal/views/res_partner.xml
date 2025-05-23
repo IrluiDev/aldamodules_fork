@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="act_res_partner_2_saved_cart" model="ir.actions.act_window">
+        <field name="name">Saved Carts</field>
+        <field name="res_model">purchase.request.saved.cart</field>
+        <field name="type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_partner_id': active_id}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            There are no carts created by this partner yet.
+            </p>
+        </field>
+    </record>
+
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">view.partner.form.purchase_portal</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']//group[@name='purchase']" position="inside">
+                <field name="min_purchase_amount"/>
+            </xpath>
+
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="action" name="%(purchase_portal.act_res_partner_2_saved_cart)d"
+                    icon="fa-usd">
+                    <field string="Saved carts" name="saved_cart_count" widget="statinfo"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

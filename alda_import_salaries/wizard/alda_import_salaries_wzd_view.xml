@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="wizard_import_salaries" model="ir.ui.view">
+        <field name="name">alda.import.salaries.wzd.form</field>
+        <field name="model">alda.import.salaries.wzd</field>
+        <field name="arch" type="xml">
+            <form string="Import Salaries">
+                <group>
+                    <field name="journal_id" />
+                </group>
+                <group>
+                    <field name="xlsx_file" filename="filename" />
+                    <field name="filename" invisible="1" />
+                </group>
+                <footer>
+                    <button
+                        string="Import"
+                        name="action_file_import"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="import_salaries_action" model="ir.actions.act_window">
+        <field name="name">Import Alda's Salaries</field>
+        <field name="res_model">alda.import.salaries.wzd</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_import_salaries" />
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="import_salaries_menu"
+        parent="account.menu_finance_entries_actions"
+        name="Import Alda's Salaries"
+        sequence="12"
+        action="import_salaries_action"
+    />
+
+</odoo>

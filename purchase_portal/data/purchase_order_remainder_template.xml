@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+        <record id="alda_purchase_remainder" model="mail.template">
+            <field name="name">Alda Purchase Order: Vendor Remainder</field>
+            <field name="model_id" ref="purchase_portal.model_purchase_order" />
+            <field
+                name="subject"
+            >${object.property_id.name}: Pedido (Ref ${object.name or 'n/a' }) - ${object.company_id.name}</field>
+            <field
+                name="email_from"
+            >${object.property_id.partner_id.email | safe}</field>
+            <field
+                name="email_to"
+            >${(object.email and '"%s" &lt;%s&gt;' % (object.partner_name, object.email) or object.partner_id.email or '') | safe}</field>
+            <field name="body_html" type="html">
+                    <div style="background-color:#ffffff;margin: 0; padding: 0; min-width: 100%;">
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff">
+                            <tbody><tr>
+                                <td>
+                                    <table style="width:650px;border: 1px solid #eeeeee; background-color:#f6f6f6;" align="center" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody><tr>
+                                            <td style="padding:30px;background-color:#242424;">
+                                                <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                    <tbody><tr>
+                                                        <td width="50%" valign="middle">
+                                                            <img src="https://firma.aldahotels.es/img/logowhite.png" alt="Alda Hotels" style="width:200px;height: auto;"/>
+                                                        </td>
+                                                        <td align="right" valign="middle" width="50%" style="padding:0 15px;">
+                                                            <a href="https://www.facebook.com/AldaHotels/"><img src="https://firma.aldahotels.es/img/fb_white.png" alt="facebook" style="padding:5px 3px;"/></a>
+                                                            <a href="https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw"><img src="https://firma.aldahotels.es/img/yt_white.png" alt="youtube" style="padding:5px 3px;"/></a>
+                                                            <a href="https://www.instagram.com/aldahotels/?hl=en/"><img src="https://firma.aldahotels.es/img/ig_white.png" alt="instagram" style="padding:5px 3px;"/></a>
+                                                            <a href="https://es.linkedin.com/company/aldahotels"><img src="https://firma.aldahotels.es/img/in_white.png" alt="linked-in" style="padding:5px 3px;"/></a>
+                                                            <a href="https://twitter.com/AldaHotels"><img src="https://firma.aldahotels.es/img/x_white.png" alt="x" style="padding:5px 3px;"/></a>
+                                                            <br/>
+                                                            <a href="https://www.aldahotels.es/" style="font-size:15px;color:#FFFFFF;">aldahotels.es</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody></table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:60px 30px 20px 30px;">
+                                                <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                    <tbody><tr>
+                                                        <td align="center" style="font-size:24px;">Recordatorio de entrega pendiente</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="center" style="padding:20px 0;">
+                                                            <div style="width:50px;height: 5px; background-color:#242424;"></div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="paragraph" style="padding:20px 0 0 0;" align="justify">
+                                                            Estimado/a ${object.partner_id.name} 
+                                                                % if object.partner_id.parent_id:
+                                                                    (${object.partner_id.parent_id.name})
+                                                                % endif
+                                                            <br/>
+                                                            <span style="font-style:italic;"> 
+                                                                <br/>
+                                                                Este es un recordatorio de que la entrega del pedido de compra:
+                                                                <ul>
+                                                                    <li><strong>Número:</strong> ${object.name}
+                                                                        % if object.partner_ref:
+                                                                            ${object.partner_ref}
+                                                                        % endif 
+                                                                    </li>
+                                                                    <li><strong>Para ser entregado en el almacén:</strong> ${object.picking_type_id.name}
+                                                                    </li>
+                                                                    <li><strong>Dirección:
+                                                                        <br/>${object.property_id.name}
+                                                                        <br/>Ciudad:</strong> ${object.property_id.city}
+                                                                        <br/><strong>Calle:</strong> ${object.property_id.street}
+                                                                        <br/><strong>Provincia:</strong> ${object.property_id.state_id.name}
+                                                                        <br/><strong>Código Postal:</strong> ${object.property_id.zip}
+                                                                        <br/><strong>Teléfono:</strong> ${object.property_id.phone}
+                                                                    </li>
+                                                                </ul>
+                                                                <br/>
+                                                                ¿Podría confirmar que se entregará a tiempo?
+                                                                <br/>
+                                                                Saludos cordiales,
+                                                                <br/>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding:30px;background-color:#242424;">
+                                                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                <tbody><tr>
+                                                                    <td width="50%" valign="middle">
+                                                                        <img src="https://firma.aldahotels.es/img/logowhite.png" alt="Alda Hotels" style="width:200px;height: auto;"/>
+                                                                    </td>
+                                                                    <td align="right" valign="middle" width="50%" style="padding:0 15px;">
+                                                                        <a href="https://www.facebook.com/AldaHotels/"><img src="https://firma.aldahotels.es/img/fb_white.png" alt="facebook" style="padding:5px 3px;"/></a>
+                                                                        <a href="https://www.youtube.com/channel/UCJ20x2dNJt5JIOgONS59aDw"><img src="https://firma.aldahotels.es/img/yt_white.png" alt="youtube" style="padding:5px 3px;"/></a>
+                                                                        <a href="https://www.instagram.com/aldahotels/?hl=en/"><img src="https://firma.aldahotels.es/img/ig_white.png" alt="instagram" style="padding:5px 3px;"/></a>
+                                                                        <a href="https://es.linkedin.com/company/aldahotels"><img src="https://firma.aldahotels.es/img/in_white.png" alt="linked-in" style="padding:5px 3px;"/></a>
+                                                                        <a href="https://twitter.com/AldaHotels"><img src="https://firma.aldahotels.es/img/x_white.png" alt="x" style="padding:5px 3px;"/></a>
+                                                                        <br/>
+                                                                        <a href="https://www.aldahotels.es/" style="font-size:15px;color:#FFFFFF;">aldahotels.es</a>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody></table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody></table>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+            </field>
+            <field name="lang">${object.partner_id.lang}</field>
+        </record>
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_purchase_request_line_make_purchase_order_form" model="ir.ui.view">
+        <field name="name">view.purchase.request.line.make.purchase.order</field>
+        <field name="model">purchase.request.line.make.purchase.order</field>
+        <field name="inherit_id" ref="purchase_request.view_purchase_request_line_make_purchase_order" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[2]" position="after">
+                <group>
+                    <field name="property_id" readonly="1"/>
+                </group>
+                <group attrs="{'invisible': [('multiple_suppliers', '!=', True)]}">
+                    <field name="multiple_suppliers" readonly="1"/>
+                    <small>There are multiple suppliers. More than one purchase order will be created.</small>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

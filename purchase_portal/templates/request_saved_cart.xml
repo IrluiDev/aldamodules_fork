@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_docs_entry" name="Portal access Projects / Tasks" inherit_id="portal.portal_docs_entry">
+        <xpath expr="//a" position="attributes">
+            <attribute name="t-if">
+                (user_id.hide_menus and url in ['/my/saved_carts', '/my/stock_pickings', '/my/product_list', '/my/purchase_requests', '/my/purchase', '/my/stock_pickings']) or not user_id.hide_menus
+            </attribute>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_menu_saved_carts" name="Portal layout : Saved carts menu entries" inherit_id="portal.portal_breadcrumbs" priority="45">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'Saved cart'" t-attf-class="breadcrumb-item #{'active ' if not saved_cart else ''}">
+                <a t-if="saved_cart" t-attf-href="/my/saved_carts?{{ keep_query() }}">Saved Carts</a>
+                <t t-else="">Saved Carts</t>
+            </li>
+            <li t-if="saved_cart" class="breadcrumb-item active">
+                <t t-esc="saved_cart.name"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_saved_carts" name="Portal My Home : Saved carts entries" inherit_id="portal.portal_my_home" customize_show="True" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Saved Carts</t>
+                <t t-set="url" t-value="'/my/saved_carts'"/>
+                <t t-set="placeholder_count" t-value="'saved_carts_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_my_saved_carts" name="My Saved Carts">
+      <t t-call="portal.portal_layout">
+        <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+        <t t-call="portal.portal_searchbar">
+            <t t-set="title">Saved Carts</t>
+        </t>
+        <t t-if="saved_carts" t-call="portal.portal_table">
+            <thead>
+                <tr class="active">
+                    <th>Saved Cart #</th>
+                    <th class='d-none d-md-table-cell'>Date</th>
+                    <th class='d-none d-md-table-cell'>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <t t-foreach="saved_carts" t-as="cart">
+                    <tr>
+                        <td>
+                            <a t-att-href="cart.get_portal_url()" t-att-title="cart.name">
+                                <t t-esc="cart.name"/>
+                            </a>
+                        </td>
+                        <td class="d-none d-md-table-cell"><span t-field="cart.create_date"/></td>
+                        <td class="d-none d-md-table-cell tx_status">
+                            <a t-att-href="cart.add_to_cart_url"><span class="badge rounded-pill text-bg-secondary"><i class="fa fa-cart-plus"></i> Add to cart</span></a>
+                            <a t-att-href="cart.add_to_cart_and_delete_url"><span class="badge rounded-pill text-bg-secondary"><i class="fa fa-cart-arrow-down"></i> Add to cart and delete</span></a>
+                            <a t-att-href="cart.delete_url"><span class="badge rounded-pill text-bg-secondary"><i class="fa fa-trash-o"></i> Delete</span></a>
+                        </td>
+                    </tr>
+                </t>
+            </tbody>
+        </t>
+      </t>
+    </template>
+
+    <template id="portal_saved_cart_page" name="My Saved Cart">
+        <t t-call="portal.portal_layout">
+            <t t-call="portal.portal_record_layout">
+                <t t-set="card_header">
+                    <h5 class="mb-0 o_saved_cart_data_container" id="o_saved_cart_data_container">
+                        <t t-call="purchase_portal.portal_saved_cart_info">
+                            <t t-value="saved_cart" t-set="saved_cart"/>
+                        </t>
+                    </h5>
+                </t>
+                <t t-set="card_body">
+                    <div id="general_information">
+                        <div class="row mt4">
+                            <div t-if="saved_cart.partner_id" class="col-12 col-md-6 mb-4 mb-md-0">
+                                <h6><strong>Customer:</strong></h6>
+                                <div class="row">
+                                    <div class="col flex-grow-0 pr-3">
+                                        <img t-if="saved_cart.partner_id.image_128" class="rounded-circle mt-1 o_portal_contact_img" t-att-src="image_data_uri(saved_cart.partner_id.image_128)" alt="Contact"/>
+                                        <img t-else="" class="rounded-circle mt-1 o_portal_contact_img" src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
+                                    </div>
+                                    <div class="col pl-sm-0">
+                                        <address t-field="saved_cart.partner_id" t-options='{"widget": "contact", "fields": ["name", "email", "phone"]}'/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt32" id="product_information">
+                            <div class="col-12 col-md-6">
+                                <div class="row mb-2 mb-sm-1">
+                                    <div class="col-12 col-sm-4">
+                                        <strong>Saved cart date</strong>
+                                    </div>
+                                    <div class="col-12 col-sm-8">
+                                        <span t-field="saved_cart.create_date" t-options='{"widget": "date"}'/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="products" style="page-break-inside: auto;" class="mt32 o_saved_cart_summary">
+                        <h3 id="details">Products</h3>
+                        <span id="edit_errors"/>
+                        <table class="table table-sm" id="sales_order_table">
+                            <thead class="bg-100">
+                                <tr>
+                                    <t t-set="colspan" t-value="3"/>
+                                    <th class="text-left">Product</th>
+                                    <th class="text-right">Quantity</th>
+                                    <th class="text-right">Options</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody" id="o_saved_cart_summary_container">
+                                <t t-call="purchase_portal.portal_my_saved_items">
+                                    <t t-value="saved_cart" t-set="saved_cart"/>
+                                </t>
+                            </tbody>
+                        </table>
+                    </section>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_my_saved_items" name="My Saved Cart Items">
+        <t t-foreach="saved_cart.item_ids" t-as="item">
+            <tr>
+                <td id="product_name">[<span t-field="item.product_id.id"/>] <span t-field="item.product_id.display_name"/></td>
+                <td class="text-right">
+                    <span t-field="item.product_qty" class="o_cart_line_change_qty"/>
+                    <input type="number" t-att-data-item_id="item.id" name="product_qty" class="d-none o_hidden_cart_line_quantity_input" t-att-value="item.product_qty"/>
+                </td>
+                <td class="text-right">
+                    <a t-att-href="item.delete_url"><span class="small text-info orders_label_text_align"><i class="fa fa-trash-o"></i> Delete</span></a>
+                </td>
+            </tr>
+        </t>
+    </template>
+
+    <template id="portal_saved_cart_info" name="Saved cart info">
+        <span>
+            Saved Cart - <span t-field="saved_cart.name" class="o_saved_cart_change_name"/>
+            <input type="text" t-att-data-saved_cart="saved_cart.id" name="name" class="d-none o_hidden_saved_cart_name_input" t-att-value="saved_cart.name"/>
+        </span>
+        <span class="float-right">
+            <a t-att-href="saved_cart.add_to_cart_url"><span class="small text-info orders_label_text_align"><i class="fa fa-cart-plus"></i> Add to cart</span></a>
+            <a t-att-href="saved_cart.add_to_cart_and_delete_url"><span class="small text-info orders_label_text_align"><i class="fa fa-cart-arrow-down"></i> Add to cart and delete</span></a>
+            <a t-att-href="saved_cart.delete_url"><span class="small text-info orders_label_text_align"><i class="fa fa-trash-o"></i> Delete</span></a>
+        </span>
+    </template>
+</odoo>

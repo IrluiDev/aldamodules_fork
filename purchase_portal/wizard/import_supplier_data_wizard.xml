@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="import_supplier_data_wizard_form" model="ir.ui.view">
+        <field name="name">import.supplier.data.wizard.form</field>
+        <field name="model">import.supplier.data.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <p attrs="{'invisible': [('imported', '!=', False)]}">
+                    This wizard allow to import a csv file with the stock of the products.<br/>
+                    The csv file must contain the columns reference and stock, being reference the supplier code for the product.
+                </p>
+                <group>
+                    <field name="imported" invisible="1" />
+                    <field name="supplier_file_name" invisible="1" />
+                    <field
+                        name="supplier_file" filename="supplier_file_name" widget="binary"
+                        attrs="{'invisible': [('imported', '!=', False)]}"
+                    />
+                    <field
+                        name="supplier_id"
+                        attrs="{'invisible': [('imported', '!=', False)]}"
+                    />
+                    <field
+                        name="product_errors"
+                        readonly="True"
+                        nolabel="1"
+                        attrs="{'invisible': [('imported', '==', False)]}"
+                        colspan="2"
+                    />
+                </group>
+                <footer>
+                    <button
+                        name="import_data"
+                        string="Import data"
+                        type="object"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('imported', '!=', False)]}"
+                    />
+                    <button
+                        string="Cancel"
+                        class="oe_link"
+                        special="cancel"
+                        attrs="{'invisible': [('imported', '!=', False)]}"
+                    />
+                    <button
+                        string="Close"
+                        class="oe_link"
+                        special="cancel"
+                        attrs="{'invisible': [('imported', '==', False)]}"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="import_supplier_data_wizard_action" model="ir.actions.act_window">
+        <field name="name">Import suppliers CSV</field>
+        <field name="res_model">import.supplier.data.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="import_supplier_data_wizard_menu"
+        name="Import suppliers CSV"
+        action="import_supplier_data_wizard_action"
+        parent="purchase.menu_purchase_config"
+    />
+
+</odoo>

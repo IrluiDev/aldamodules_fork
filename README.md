@@ -7,9 +7,9 @@
 
 <!-- /!\ do not modify above this line -->
 
-# pms
+# pms Alda Modules
 
-TODO: add repo description.
+TODO: PMS Modules for Alda Hotels.
 
 <!-- /!\ do not modify below this line -->
 

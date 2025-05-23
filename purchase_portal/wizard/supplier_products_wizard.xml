@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="supplier_products_wizard" model="ir.ui.view">
+        <field name="name">supplier.products.wizard</field>
+        <field name="model">supplier.products.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Supplier Products">
+                <group>
+                    <field name="hotel_id" invisible="1"/>
+                    <field name="seller_ids" invisible="1"/>
+                    <field name="supplier_ids" widget="many2many"/>
+                    <field name="product_supplier_ids" invisible="1" widget="many2many"/>
+                    <field name="product_ids" widget="many2many"/>
+                </group>
+                <footer>
+                    <button name="action_confirm" string="Confirm" type="object" class="btn-primary"/>
+                    <button name="action_cancel" string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
