@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<odoo>
-    <record id="action_helpdesk_ticket" model="ir.actions.act_window">
-        <field name="name">Tickets</field>
-        <field name="res_model">helpdesk.ticket</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('pms_property_id', '=', active_id)]</field>
-    </record>
-</odoo>
