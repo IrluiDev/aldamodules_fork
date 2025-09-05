@@ -1,3 +1,4 @@
+import base64
 import logging
 from datetime import datetime
 
@@ -13,6 +14,13 @@ class HelpdeskFormController(http.Controller):
     @http.route("/helpdesk/ticket/new", type="http", auth="public", website=True)
     def helpdesk_ticket_form(self, **kwargs):
         ensure_db()
+        if not (
+            request.env.user.has_group("base.group_user")
+            or request.env.user.has_group("base.group_portal")
+        ):
+            _logger.warning("Acceso denegado para usuario %s", request.env.user.name)
+            return request.redirect("/web/login")
+
         user_id = request.env.user
         partner_id = request.env.user.partner_id
         property_id = int(kwargs.get("property_id", 0))
@@ -159,6 +167,45 @@ class HelpdeskFormController(http.Controller):
             ticket.is_property_operated_normaly,
             ticket.is_room_operated_normaly,
         )
+
+        attachment = request.httprequest.files.get("attachment")
+        if post.get("attachment", False):
+            attachments = request.httprequest.files.getlist("attachment")
+            attachment_ids = []
+
+            for attachment in attachments:
+                if attachment and attachment.filename:
+                    try:
+                        attachment_data = base64.b64encode(attachment.read()).decode(
+                            "utf-8"
+                        )
+                        att = (
+                            request.env["ir.attachment"]
+                            .sudo()
+                            .create(
+                                {
+                                    "name": attachment.filename,
+                                    "type": "binary",
+                                    "datas": attachment_data,
+                                    "res_model": "helpdesk.ticket",
+                                    "res_id": ticket.id,
+                                    "public": True,
+                                    "mimetype": attachment.content_type,
+                                }
+                            )
+                        )
+                        attachment_ids.append(att.id)
+                    except Exception as e:
+                        _logger.error("Upload file failed %s: %s", ticket.id, str(e))
+
+            if attachment_ids:
+                message_body = post.get("description", "")
+                message = ticket.message_post(
+                    body=message_body,
+                    attachment_ids=attachment_ids,
+                    message_type="comment",
+                    subtype_xmlid="mail.mt_comment",
+                )
 
         return request.redirect(f"/helpdesk/ticket/confirmation/{ticket.id}")
 

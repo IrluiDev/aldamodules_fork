@@ -14,7 +14,10 @@ class HelpdeskPriorityRule(models.Model):
         ],
         string="Types Ruler",
         required=True,
+        help="Defines the type of rule based on room status:,"
+        "Not Room, Unblocked Room, or Blocked Room.",
     )
+
     block_category = fields.Selection(
         [
             ("low", "Blocked Low"),
@@ -26,6 +29,7 @@ class HelpdeskPriorityRule(models.Model):
         required=True,
         compute="_compute_block_category",
         store=True,
+        help="Categorizes the level of room blocking: Low, Medium, or High blocking severity.",
     )
 
     occupancy_category = fields.Selection(
@@ -39,10 +43,15 @@ class HelpdeskPriorityRule(models.Model):
         required=True,
         compute="_compute_block_category",
         store=True,
+        help="Categorizes the occupancy level of the property:"
+        " Low, Medium, or High occupancy rates.",
     )
 
     rule_name = fields.Char(
-        string="Name Ruler", compute="_compute_rule_name", store=True
+        string="Name Ruler",
+        compute="_compute_rule_name",
+        store=True,
+        help="Displays the computed name of the rule based on its criteria and conditions.",
     )
 
     is_pms_property = fields.Selection(
@@ -51,26 +60,37 @@ class HelpdeskPriorityRule(models.Model):
         default="30",
         readonly=True,
         required=True,
+        help="Indicates that ticket has Property related.",
     )
 
     is_room_related = fields.Selection(
-        [("20", "Yes"), ("0", "No")], string="Room Related?", default="0", required=True
+        [("20", "Yes"), ("0", "No")],
+        string="Room Related?",
+        default="0",
+        required=True,
+        help="Specifies if the rule is related to a specific room or applies generally.",
     )
 
     is_room_blocked = fields.Selection(
-        [("30", "Yes"), ("0", "No")], string="Room Blocked?", default="0", required=True
+        [("30", "Yes"), ("0", "No")],
+        string="Room Blocked?",
+        default="0",
+        required=True,
+        help="Indicates whether the room is currently blocked or unavailable for booking.",
     )
 
     days_blocked = fields.Selection(
         [
-            ("0", "0 days"),
+            # ("0", "0 days"),
             ("300", "1 to 15 days"),
             ("400", "16 to 30 days"),
             ("500", "More than 30 days"),
         ],
         string="Days Room Blocked",
-        default="0",
+        default="300",
         required=True,
+        help="Specifies the duration for which the room has been,"
+        " blocked: 1-15 days, 16-30 days, or more than 30 days.",
     )
 
     occupancy_rate = fields.Selection(
@@ -78,6 +98,8 @@ class HelpdeskPriorityRule(models.Model):
         string="Occupancy Rate (%)",
         default="5",
         required=True,
+        help="Indicates the occupancy rate of the property as a,"
+        " percentage range: 0-30%, 31-70%, or 71-100%.",
     )
 
     block_rate = fields.Selection(
@@ -85,6 +107,7 @@ class HelpdeskPriorityRule(models.Model):
         string="Block Rate (%)",
         default="100",
         required=True,
+        help="Shows the percentage of rooms that are blocked: 0-30%, 31-70%, or 71-100%.",
     )
 
     season = fields.Selection(
@@ -92,16 +115,24 @@ class HelpdeskPriorityRule(models.Model):
         string="Season of the Year",
         default="5",
         required=True,
+        help="Indicates whether the current period is considered,"
+        " low season or high season for the property.",
     )
 
     is_room_operated_normaly = fields.Selection(
-        [("20", "Yes"), ("0", "No")], string="Room Operating Normally?", default="20"
+        [("20", "Yes"), ("0", "No")],
+        string="Room Operating Normally?",
+        default="20",
+        help="Indicates whether the room is operating normally,"
+        " or if there are operational issues.",
     )
 
     is_property_operated_normaly = fields.Selection(
         [("20", "Yes"), ("0", "No")],
         string="Property Operating Normally?",
         default="20",
+        help="Indicates whether the property is operating normally or,"
+        " if there are operational issues affecting the entire property.",
     )
 
     priority_estimated = fields.Selection(
@@ -109,9 +140,16 @@ class HelpdeskPriorityRule(models.Model):
         string="Estimated Priority",
         default="0",
         required=True,
+        help="Displays the estimated priority level of the ticket,"
+        " based on business rules and conditions.",
     )
 
-    priority_suggestion_action = fields.Html(string="Suggested Action", required=True)
+    priority_suggestion_action = fields.Html(
+        string="Suggested Action",
+        required=True,
+        help="Provides recommended actions or solutions based on"
+        " the calculated priority and business rules.",
+    )
 
     _sql_constraints = [
         (

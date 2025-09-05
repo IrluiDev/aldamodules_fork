@@ -21,13 +21,16 @@ class HelpdeskTicket(models.Model):
     priority_suggestion_action = fields.Html(
         string="Suggested Action",
         compute="_compute_priority_recomended_rule",
+        help="Displays recommended actions based on the calculated,"
+        " priority and business rules.",
     )
 
     priority_estimated = fields.Selection(
         related="priority_rule_id.priority_estimated",
         string="Estimated Priority",
         store=True,
-        help="Automatically calculated priority based on business rules",
+        help="Automatically calculated priority based on business rules,"
+        " and ticket characteristics.",
     )
 
     alert_level = fields.Selection(
@@ -40,6 +43,8 @@ class HelpdeskTicket(models.Model):
         ],
         compute="_compute_alert_level",
         store=True,
+        help="Indicates the occupancy level alert status based on room,"
+        " availability and booking patterns.",
     )
 
     @api.onchange("priority_rule_id")

@@ -33,6 +33,7 @@
                             <h2><center>Form New Ticket</center></h2>
                             <form
                             action="/helpdesk/ticket/submit"
+                            enctype="multipart/form-data"
                             method="POST"
                             class="mt-4"
                         >
@@ -198,12 +199,41 @@
                                     class="form-control"
                                     rows="4"
                                 />
+                                    <small class="form-text text-muted mt-1">
+                                        What are you seeing? If is to error, What are you trying to do?
+                                    </small>
                                 </div>
-
-                                <button
-                                type="submit"
-                                class="btn btn-primary"
-                            >Send ticket</button>
+                                <div class="form-group row s_website_form_field mb-3">
+                                    <label
+                                    class="col-sm-3 col-form-label s_website_form_label"
+                                    for="attachment"
+                                >
+                                        <span
+                                        class="s_website_form_label_content"
+                                    >Attachment File</span>
+                                    </label>
+                                    <div class="col-sm">
+                                        <input
+                                        type="file"
+                                        class="form-control s_website_form_input"
+                                        name="attachment"
+                                        id="attachment"
+                                        multiple="true"
+                                        required="1"
+                                    />
+                                        <small class="form-text text-muted mt-1">
+                                            Please send us a photo, screenshot, digital document, or any other resource
+                                            that provides relevant information to help us address your request.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <button
+                                    type="submit"
+                                    class="btn btn-primary"
+                                >Send ticket
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -253,47 +283,6 @@
                             </div>
                         </t>
                     </div>
-                </div>
-            </div>
-        </t>
-    </template>
-
-    <template id="access_denied_page_minimal" name="Access Denied Minimal">
-        <t t-call="web.empty_layout">
-            <style>
-                body {
-                    background-color: #f8f9fa;
-                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                }
-                .message-box {
-                    background: white;
-                    padding: 3rem;
-                    border-radius: 12px;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-                    max-width: 500px;
-                    margin: 0 auto;
-                }
-                .message-box h1 {
-                    color: #dc3545;
-                    margin-bottom: 1rem;
-                }
-                .message-box p {
-                    color: #6c757d;
-                    font-size: 1.1rem;
-                }
-                .btn-primary {
-                    background-color: #007bff;
-                    border-color: #007bff;
-                    padding: 10px 25px;
-                    font-weight: 500;
-                }
-            </style>
-
-            <div class="container-fluid min-vh-100 d-flex align-items-center">
-                <div class="message-box">
-                    <h1>Acceso Denegado</h1>
-                    <p>No tienes permisos para ver este formulario.</p>
-                    <a href="/web/login" class="btn btn-primary">Iniciar sesión</a>
                 </div>
             </div>
         </t>

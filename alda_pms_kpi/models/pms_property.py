@@ -23,7 +23,10 @@ class PmsProperty(models.Model):
     @api.depends("daily_kpi_ids")
     def _compute_kpi_count(self):
         for record in self:
-            record.kpi_count = len(record.daily_kpi_ids)
+            if record.daily_kpi_ids:
+                record.kpi_count = len(record.daily_kpi_ids)
+            else:
+                record.kpi_count = False
 
     def action_open_kpis(self):
         action = self.env.ref("alda_pms_kpi.pms_property_daily_kpi_action").read()[0]
@@ -61,6 +64,11 @@ class PmsProperty(models.Model):
             if not record.id:
                 record.occupancy_rate = 0.0
                 continue
+
+            if record.daily_kpi_ids:
+                record.kpi_count = len(record.daily_kpi_ids)
+            else:
+                record.kpi_count = False
 
             kpi = self.env["pms.daily.kpi"].create_or_update_daily_kpi(
                 record.id,

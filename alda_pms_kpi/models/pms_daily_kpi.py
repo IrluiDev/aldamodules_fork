@@ -18,6 +18,7 @@ class PmsDailyKpi(models.Model):
         string="PMS Property",
         required=True,
         index=True,
+        domain=[("room_ids", "!=", False)],
     )
 
     total_rooms = fields.Integer(
@@ -94,7 +95,6 @@ class PmsDailyKpi(models.Model):
 
     @api.model
     def create_or_update_daily_kpi(self, property_id, kpi_date):
-        # Bloqueo para evitar condiciones de carrera
         self.env.cr.execute(
             "SELECT id FROM pms_daily_kpi WHERE date = %s AND pms_property_id = %s FOR UPDATE",
             (kpi_date, property_id),
@@ -105,11 +105,7 @@ class PmsDailyKpi(models.Model):
 
         now = datetime.now()
         if existing_kpi:
-            if (
-                not existing_kpi.last_updated
-                or existing_kpi.last_updated.date() < fields.Date.today()
-            ):
-                existing_kpi._compute_kpis()
+            existing_kpi._compute_kpis()
             return existing_kpi
         else:
             new_kpi = self.create(
@@ -127,14 +123,17 @@ class PmsDailyKpi(models.Model):
         for record in self:
             if not record.pms_property_id:
                 continue
-            kpi_data = self._calculate_daily_kpis(
-                record.date, record.pms_property_id.id
-            )
-            record.update(kpi_data)
+
+            if record.pms_property_id:
+                kpi_data = self._calculate_daily_kpis(
+                    record.date, record.pms_property_id.id
+                )
+                record.update(kpi_data)
 
     def generate_historical_kpis(self, days_back=365):
         pms_property = self.env["pms.property"]
         for prop in pms_property.search([]):
+
             for i in range(-days_back, 0):
                 current_date = fields.Date.today() + timedelta(days=i)
 

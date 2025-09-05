@@ -112,11 +112,13 @@ class HelpdeskTicket(models.Model):
         string="Season",
         compute="_compute_season_type",
         store=False,
+        help="Indicates whether the current season is high or low.",
     )
 
     property_count_tickets = fields.Integer(
         string="Total Tickets",
         compute="_compute_take_ticket_count",
+        help="Displays the total number of helpdesk tickets associated with this property.",
     )
 
     occupancy_rate = fields.Float(
@@ -125,12 +127,16 @@ class HelpdeskTicket(models.Model):
         compute_sudo=True,
         digits=(16, 2),
         default=0.0,
+        help="Shows the percentage of rooms occupied in the property,"
+        " compared to the total available rooms.",
     )
 
     date_now = fields.Date(
         string="Today",
         default=fields.Date.today,
         store=False,
+        help="Displays the current date. This field is for reference,"
+        " purposes only and is not stored.",
     )
 
     blocked_rooms = fields.Integer(
@@ -138,6 +144,8 @@ class HelpdeskTicket(models.Model):
         compute="_compute_show_daily_kpi",
         compute_sudo=True,
         store=True,
+        help="Represents the total number of rooms that are,"
+        " currently blocked or unavailable for booking.",
     )
 
     ticket_blocked_room_adr_accumulated = fields.Float(
@@ -145,16 +153,29 @@ class HelpdeskTicket(models.Model):
         compute="_compute_blocked_room_adr",
         store=True,
         digits=(16, 2),
+        help="Calculates the accumulated Average Daily Rate for all,"
+        " blocked rooms over the specified period.",
     )
 
     total_days_blocked = fields.Integer(
         string="Accumulated Days (Blocked Room)",
         compute="_compute_blocked_room_adr",
         store=True,
+        help="Counts the total number of days that rooms have been,"
+        " blocked during the reporting period.",
     )
 
-    occupancy_kpi_info = fields.Char(string="Occupancy Rate Info")
-    block_kpi_info = fields.Char(string="Out Rate Info")
+    occupancy_kpi_info = fields.Char(
+        string="Occupancy Rate Info",
+        help="Provides additional information or context about,"
+        " the occupancy rate calculation or trends.",
+    )
+
+    block_kpi_info = fields.Char(
+        string="Out Rate Info",
+        help="Provides additional information or context about the room, "
+        "blocking rate or occupancy trends.",
+    )
 
     @api.onchange("is_room", "is_bathroom")
     def _onchange_is_room(self):
@@ -410,6 +431,12 @@ class HelpdeskTicket(models.Model):
             },
         }
 
+    @api.onchange("pms_property_id")
+    def _onchange_pms_property_id_location(self):
+        for ticket in self:
+            if not ticket.pms_property_id:
+                ticket.location_type = False
+
     @api.depends("pms_property_id")
     def _compute_show_daily_kpi(self):
         for ticket in self:
@@ -417,6 +444,7 @@ class HelpdeskTicket(models.Model):
             if not ticket.pms_property_id:
                 ticket.occupancy_rate = 0.0
                 ticket.blocked_rooms = 0
+                ticket.location_type = False
             else:
                 data = self.env["pms.daily.kpi"].create_or_update_daily_kpi(
                     ticket.pms_property_id.id, ticket.date_now
@@ -511,7 +539,6 @@ class HelpdeskTicket(models.Model):
 
         room_type = room.room_type_id
         room_type_price = room_type.list_price or 0.0
-
         start_date = create_date.date()
         end_date = close_date.date() if close_date else fields.Date.today(self)
 
@@ -534,7 +561,8 @@ class HelpdeskTicket(models.Model):
 
         total_days_blocked = len(blocked_lines)
 
-        adr_accumulated = room_type_price * total_days_blocked
+        if total_days_blocked > 0:
+            adr_accumulated = room_type_price * total_days_blocked
 
         return {
             "adr_accumulated": adr_accumulated,
@@ -561,3 +589,27 @@ class HelpdeskTicket(models.Model):
 
             ticket.ticket_blocked_room_adr_accumulated = result["adr_accumulated"]
             ticket.total_days_blocked = result["total_days_blocked"]
+
+    @api.onchange("pms_property_id")
+    def _onchange_pms_property_id(self):
+        for ticket in self:
+            if not ticket.pms_property_id:
+                if ticket.pms_room_id:
+                    ticket.pms_room_id = False
+                    ticket.is_room = False
+                    ticket.is_bathroom = False
+                    ticket.is_room_blocked = False
+                    ticket.ticket_blocked_room_adr_accumulated = 0.0
+                    ticket.location_type = False
+                continue
+
+            if (
+                ticket.pms_room_id
+                and ticket.pms_room_id.pms_property_id != ticket.pms_property_id
+            ):
+                ticket.pms_room_id = False
+                ticket.is_room = False
+                ticket.is_bathroom = False
+                ticket.is_room_blocked = False
+                ticket.ticket_blocked_room_adr_accumulated = 0.0
+                ticket.location_type = False

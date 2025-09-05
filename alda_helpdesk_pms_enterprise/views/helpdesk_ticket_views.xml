@@ -14,6 +14,7 @@
                     <field
                     name="pms_room_id"
                     options="{'no_open': True,'no_create': True}"
+                    attrs="{'invisible': [('pms_property_id', '=', False)]}"
                 />
                 </xpath>
             </field>

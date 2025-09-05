@@ -6,11 +6,13 @@
         <field name="inherit_id" ref="pms.pms_property_views_form" />
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="inside">
+                <field name="room_ids" invisible="1" />
                 <button
                     class="oe_stat_button"
                     type="object"
                     name="action_open_kpis"
                     icon="fa-line-chart"
+                    attrs="{'invisible': [('room_ids', '=', [])]}"
                 >
                     <div class="o_field_widget o_stat_info">
                         <span class="o_stat_value">
@@ -29,12 +31,14 @@
                 </button>
             </xpath>
             <xpath expr="//sheet" position="before">
+                <field name="room_ids" invisible="1" />
                 <header>
-                    <button
+                        <button
                         name="%(action_pms_generate_batch_kpi)d"
                         string="View Property KPI's"
                         type="action"
                         class="btn-primary"
+                        attrs="{'invisible': [('room_ids', '=', [])]}"
                     />
                 </header>
             </xpath>

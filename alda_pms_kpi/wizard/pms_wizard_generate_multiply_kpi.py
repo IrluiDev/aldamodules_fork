@@ -27,6 +27,7 @@ class PmsWizardGenerateBatchKpi(models.TransientModel):
         column2="property_id",
         string="Propiedades",
         required=True,
+        domain=[("room_ids", "!=", False)],
     )
 
     def action_generate_kpis(self):

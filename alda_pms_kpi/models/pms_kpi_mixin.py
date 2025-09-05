@@ -24,6 +24,21 @@ class PmsKpiMixin(models.AbstractModel):
                 ]
             )
         )
+        if total_rooms == 0:
+            return {
+                "total_rooms": 0,
+                "occupied_rooms": 0,
+                "blocked_rooms": 0,
+                "available_rooms": 0,
+                "pax": 0,
+                "available_rate": 0,
+                "occupancy_rate": 0,
+                "block_rate": 0,
+                "room_revenue": 0,
+                "adr": 0,
+                "revpar": 0,
+                "last_updated": fields.Datetime.now(),
+            }
 
         reservation_lines = (
             self.env["pms.reservation.line"]
