@@ -271,7 +271,7 @@
                 <field
                     name="priority_estimated"
                     type="stacked"
-                    string="Prioridad Estimada"
+                    string="Priority Estimated"
                 />
             </graph>
         </field>

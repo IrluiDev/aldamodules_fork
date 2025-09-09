@@ -161,34 +161,15 @@
                                     <label
                                     class="form-label d-block"
                                 >will this be fixed by an external company?</label>
-
-                                    <div class="form-check form-check-inline">
+                                    <div class="form-check form-switch">
                                         <input
                                         class="form-check-input"
-                                        type="radio"
+                                        type="checkbox"
+                                        role="switch"
                                         name="company_external_id"
-                                        id="external_yes"
-                                        value="True"
+                                        id="is_company_external_id"
+                                        t-att-value="company_external_id or 'False'"
                                     />
-                                        <label
-                                        class="form-check-label"
-                                        for="external_yes"
-                                    >Yes</label>
-                                    </div>
-
-                                    <div class="form-check form-check-inline">
-                                        <input
-                                        class="form-check-input"
-                                        type="radio"
-                                        name="company_external_id"
-                                        id="external_no"
-                                        value=""
-                                        checked="checked"
-                                    />
-                                        <label
-                                        class="form-check-label"
-                                        for="external_no"
-                                    >No</label>
                                     </div>
                                 </div>
 
@@ -198,6 +179,7 @@
                                     name="description"
                                     class="form-control"
                                     rows="4"
+                                    required="1"
                                 />
                                     <small class="form-text text-muted mt-1">
                                         What are you seeing? If is to error, What are you trying to do?
@@ -219,7 +201,6 @@
                                         name="attachment"
                                         id="attachment"
                                         multiple="true"
-                                        required="1"
                                     />
                                         <small class="form-text text-muted mt-1">
                                             Please send us a photo, screenshot, digital document, or any other resource
@@ -233,6 +214,12 @@
                                     class="btn btn-primary"
                                 >Send ticket
                                     </button>
+                                    <br />
+                                </div>
+                                <div class="mt-3">
+                                    <small class="form-text text-muted">
+
+                                    </small>
                                 </div>
                             </form>
                         </div>

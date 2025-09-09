@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-05 11:08+0000\n"
-"PO-Revision-Date: 2025-09-05 11:08+0000\n"
+"POT-Creation-Date: 2025-09-09 07:30+0000\n"
+"PO-Revision-Date: 2025-09-09 07:30+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -109,19 +109,19 @@ msgstr "<option value=\"\">Seleccionar tipo de ticket</option>"
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
 msgid "<option value=\"\">Select a department</option>"
-msgstr "<option value=\"\">Seleccinar el departmento</option>"
+msgstr "<option value=\"\">Seleccionar el departamento</option>"
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
 msgid ""
 "<small class=\"form-text text-muted mt-1\">\n"
-"                                            Please send us a photo, screenshot, digital document, or any other resource \n"
+"                                            Please send us a photo, screenshot, digital document, or any other resource\n"
 "                                            that provides relevant information to help us address your request.\n"
 "                                        </small>"
 msgstr ""
 "<small class=\"form-text text-muted mt-1\">\n"
-"                                            Envíanos una foto, captura de pantalla, documento digital o cualquier otro recurso \n"
-"                                            que nos aporte información relevante para atender tu solicitud.\n"
+"                                            Por favor, envíanos una foto, captura de pantalla, documento relacionado u otro recurso \n"
+"                                            que nos indique información relevante para atender correctamente el problema.\n"
 "                                        </small>"
 
 #. module: alda_helpdesk_pms
@@ -198,7 +198,7 @@ msgstr "Regla"
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__priority_estimated
 msgid ""
-"Automatically calculated priority based on business rules and ticket "
+"Automatically calculated priority based on business rules, and ticket "
 "characteristics."
 msgstr "Prioridad aplicada automáticamente según reglas del negocio"
 
@@ -263,8 +263,8 @@ msgstr "Reglas sobre habitaciones bloqueadas"
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__ticket_blocked_room_adr_accumulated
 msgid ""
-"Calculates the accumulated Average Daily Rate for all blocked rooms over the"
-" specified period."
+"Calculates the accumulated Average Daily Rate for all, blocked rooms over "
+"the specified period."
 msgstr ""
 "Calcula la Tarifa Diaria Promedio acumulada para todas las habitaciones "
 "bloqueadas durante el período especificado."
@@ -277,7 +277,6 @@ msgid ""
 msgstr ""
 "Categoriza el nivel de bloqueo de habitaciones: Bajo, Medio o Alto nivel de "
 "gravedad del bloqueo."
-
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__occupancy_category
@@ -317,7 +316,7 @@ msgstr ""
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__total_days_blocked
 msgid ""
-"Counts the total number of days that rooms have been blocked during the "
+"Counts the total number of days that rooms have been, blocked during the "
 "reporting period."
 msgstr ""
 "Cuenta el número total de días que las habitaciones han estado bloqueadas "
@@ -353,11 +352,11 @@ msgstr "Días Bloqueada"
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__type_rule
 msgid ""
-"Defines the type of rule based on room status: Not Room, Unblocked Room, or "
+"Defines the type of rule based on room status:,Not Room, Unblocked Room, or "
 "Blocked Room."
 msgstr ""
-"Define el tipo de regla basada en el estado de la habitación: Sin habitación, "
-"Habitación desbloqueada o Habitación bloqueada."
+"Define el tipo de regla basada en el estado de la habitación: Sin "
+"habitación, Habitación desbloqueada o Habitación bloqueada."
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
@@ -378,7 +377,7 @@ msgstr "Mostrar el nombre"
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__priority_suggestion_action
 msgid ""
-"Displays recommended actions based on the calculated priority and business "
+"Displays recommended actions based on the calculated, priority and business "
 "rules."
 msgstr ""
 "Muestra las acciones recomendadas basadas en la prioridad calculada y las "
@@ -388,38 +387,34 @@ msgstr ""
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__rule_name
 msgid ""
 "Displays the computed name of the rule based on its criteria and conditions."
-msgstr ""
-"Nombre de la regla calculada en función de criterios y condiciones."
+msgstr "Nombre de la regla calculada en función de criterios y condiciones."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__date_now
 msgid ""
-"Displays the current date. This field is for reference purposes only and is "
-"not stored."
-msgstr ""
-"Fecha actual. Este campo es solo para fines de referencia."
+"Displays the current date. This field is for reference, purposes only and is"
+" not stored."
+msgstr "Fecha actual. Este campo es solo para fines de referencia."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__priority_estimated
 msgid ""
-"Displays the estimated priority level of the ticket based on business rules "
-"and conditions."
+"Displays the estimated priority level of the ticket, based on business rules"
+" and conditions."
 msgstr ""
-"Nivel de prioridad estimado del ticket basado en reglas de negocio "
-"y condiciones."
+"Nivel de prioridad estimado del ticket basado en reglas de negocio y "
+"condiciones."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__property_count_tickets
 msgid ""
 "Displays the total number of helpdesk tickets associated with this property."
-msgstr ""
-"Número total de tickets de helpdesk asociados con esta propiedad."
+msgstr "Número total de tickets de helpdesk asociados con esta propiedad."
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.view_helpdesk_priority_rule_graph
 msgid "Distribución de Reglas por Prioridad"
-msgstr ""
-"Distribution of Rules by Priority"
+msgstr "Distribution of Rules by Priority"
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.constraint,message:alda_helpdesk_pms.constraint_helpdesk_ticket_priority_rule_unique_combination
@@ -579,51 +574,46 @@ msgstr "Indica si el ticket está relacionado con una habitación."
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__is_pms_property
 msgid "Indicates that ticket has Property related."
-msgstr ""
-"El ticket tiene un Hotel relacionado."
+msgstr "El ticket tiene un Hotel relacionado."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__alert_level
 msgid ""
-"Indicates the occupancy level alert status based on room availability and "
+"Indicates the occupancy level alert status based on room, availability and "
 "booking patterns."
 msgstr ""
-"Indica el estado de alerta del nivel de ocupación basado en la disponibilidad "
-"de habitaciones y registros de reservas."
+"Indica el estado de alerta del nivel de ocupación basado en la "
+"disponibilidad de habitaciones y registros de reservas."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__occupancy_rate
 msgid ""
-"Indicates the occupancy rate of the property as a percentage range: 0-30%, "
+"Indicates the occupancy rate of the property as a, percentage range: 0-30%, "
 "31-70%, or 71-100%."
 msgstr ""
-"Indica la tasa de ocupación de la propiedad como un rango porcentual: 0-30%, "
-"31-70%, o 71-100%."
-
-#. module: alda_helpdesk_pms
-#: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__season_type
-msgid ""
-"Indicates whether the current period is considered high season or low season"
-" for the property."
-msgstr ""
-"Indica el tipo de temporada: alta o baja."
+"Indica la tasa de ocupación de la propiedad como un rango porcentual: 0-30%,"
+" 31-70%, o 71-100%."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__season
 msgid ""
-"Indicates whether the current period is considered low season or high season"
-" for the property."
-msgstr ""
-"Indica el tipo de temporada: alta o baja."
+"Indicates whether the current period is considered, low season or high "
+"season for the property."
+msgstr "Indica el tipo de temporada: alta o baja."
+
+#. module: alda_helpdesk_pms
+#: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__season_type
+msgid "Indicates whether the current season is high or low."
+msgstr "Indica el tipo de temporada: alta o baja."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__is_property_operated_normaly
 msgid ""
-"Indicates whether the property is operating normally or if there are "
+"Indicates whether the property is operating normally or, if there are "
 "operational issues affecting the entire property."
 msgstr ""
-"Indica si el hotel está operando normalmente o si hay problemas "
-"operativos que afectan de forma general."
+"Indica si el hotel está operando normalmente o si hay problemas operativos "
+"que afectan de forma general."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__is_room_blocked
@@ -636,8 +626,8 @@ msgstr ""
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__is_room_operated_normaly
 msgid ""
-"Indicates whether the room is operating normally or if there are operational"
-" issues."
+"Indicates whether the room is operating normally, or if there are "
+"operational issues."
 msgstr ""
 "Indica si la habitación está operando normalmente o si hay problemas "
 "operativos."
@@ -858,10 +848,6 @@ msgstr "Gestión de hotel"
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.view_helpdesk_priority_rule_graph
-msgid "Prioridad Estimada"
-msgstr ""
-
-#. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.pms_helpdesk_ticket_search_inherit
 msgid "Priority Estimated"
 msgstr "Prioridad Estimada"
@@ -918,22 +904,22 @@ msgid "Property operated normaly"
 msgstr "El Hotel opera con normalidad"
 
 #. module: alda_helpdesk_pms
-#: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__occupancy_kpi_info
-msgid ""
-"Provides additional information or context about the occupancy rate "
-"calculation or trends."
-msgstr ""
-"Proporciona información adicional o contexto sobre la tasa de bloqueo de "
-"habitaciones o tendencias de ocupación."
-
-#. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__block_kpi_info
 msgid ""
-"Provides additional information or context about the room blocking rate or "
+"Provides additional information or context about the room, blocking rate or "
 "occupancy trends."
 msgstr ""
 "Provides recommended actions or solutions based on the calculated priority "
 "and business rules."
+
+#. module: alda_helpdesk_pms
+#: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__occupancy_kpi_info
+msgid ""
+"Provides additional information or context about, the occupancy rate "
+"calculation or trends."
+msgstr ""
+"Proporciona información adicional o contexto sobre la tasa de bloqueo de "
+"habitaciones o tendencias de ocupación."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__priority_suggestion_action
@@ -967,7 +953,7 @@ msgstr "Ticket atendido por empresa externa"
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__blocked_rooms
 msgid ""
-"Represents the total number of rooms that are currently blocked or "
+"Represents the total number of rooms that are, currently blocked or "
 "unavailable for booking."
 msgstr ""
 "Representa el número total de habitaciones que actualmente están bloqueadas "
@@ -1090,11 +1076,11 @@ msgstr "Mostrar KPIs"
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__occupancy_rate
 msgid ""
-"Shows the percentage of rooms occupied in the property compared to the total"
-" available rooms."
+"Shows the percentage of rooms occupied in the property, compared to the "
+"total available rooms."
 msgstr ""
-"Muestra el porcentaje de habitaciones ocupadas en la propiedad en comparación"
-" con el total de habitaciones disponibles."
+"Muestra el porcentaje de habitaciones ocupadas en la propiedad en "
+"comparación con el total de habitaciones disponibles."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__block_rate
@@ -1109,17 +1095,17 @@ msgstr ""
 msgid ""
 "Specifies if the rule is related to a specific room or applies generally."
 msgstr ""
-"Especifica si la regla está relacionada con una habitación específica o se"
-" aplica generalmente."
+"Especifica si la regla está relacionada con una habitación específica o se "
+"aplica generalmente."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__days_blocked
 msgid ""
-"Specifies the duration for which the room has been blocked: 1-15 days, 16-30"
-" days, or more than 30 days."
+"Specifies the duration for which the room has been, blocked: 1-15 days, "
+"16-30 days, or more than 30 days."
 msgstr ""
-"Especifica la duración durante la cual la habitación ha estado bloqueada: 1-15"
-" días, 16-30 días, o más de 30 días."
+"Especifica la duración durante la cual la habitación ha estado bloqueada: "
+"1-15 días, 16-30 días, o más de 30 días."
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
@@ -1261,12 +1247,12 @@ msgstr "Urgentes"
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.view_helpdesk_priority_rule_search
 msgid "Urgent Priority"
-msgstr ""
+msgstr "Prioridad Urgente"
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.pms_helpdesk_ticket_search_inherit
 msgid "Urgent Priority Estimated"
-msgstr "Prioridad EStimada Urgente"
+msgstr "Prioridad Estimada Urgente"
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.confirmation_ticket
