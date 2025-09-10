@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="helpdesk_analysis_view_pms_ticket" model="ir.ui.view">
+        <field name="name">helpdesk.analysis.pms.ticket</field>
+        <field name="model">helpdesk.ticket.report.analysis</field>
+        <field
+            name="inherit_id"
+            ref="helpdesk.helpdesk_ticket_report_analysis_view_search"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="pms_property_id" string="Property PMS" />
+                <field name="pms_room_id" string="Room PMS" />
+                <field name="reservation_id" string="Reservation Number PMS" />
+                <field name="blocked_room_status_label" string="Room Blocked" />
+            </xpath>
+             <xpath expr="//group" position="inside">
+                <filter
+                    string="Property PMS"
+                    name="group_property_pms"
+                    context="{'group_by': 'pms_property_id'}"
+                />
+                <filter
+                    string="Room PMS"
+                    name="group_room_pms"
+                    context="{'group_by': 'pms_room_id'}"
+                />
+                <filter
+                    string="Reservation Number PMS"
+                    name="group_reservation_pms"
+                    context="{'group_by': 'reservation_id'}"
+                />
+                <filter
+                    string="Rooms Blocked"
+                    name="group_blocked_room_status_label"
+                    context="{'group_by': 'blocked_room_status_label'}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="helpdesk_analysis_view_pms_ticket_pivot" model="ir.ui.view">
+        <field name="name">helpdesk.analysis.pms.ticket.pivot</field>
+        <field name="model">helpdesk.ticket.report.analysis</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_pivot_analysis" />
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='team_id']" position="after">
+                 <field name="pms_property_id" type="row" />
+                <field name="blocked_room_status_label" />
+                <field name="blocked_room_count" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="helpdesk_analysis_view_pms_ticket_graph" model="ir.ui.view">
+        <field name="name">helpdesk.analysis.pms.ticket.graph</field>
+        <field name="model">helpdesk.ticket.report.analysis</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_graph_analysis" />
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='team_id']" position="after">
+                 <field name="pms_property_id" />
+                 <field name="ticket_type_id" />
+                 <field name="pms_room_id" />
+                 <field name="blocked_room_status_label" />
+                 <field name="blocked_room_count" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

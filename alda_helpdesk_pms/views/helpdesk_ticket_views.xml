@@ -145,6 +145,11 @@
                     widget="boolean_toggle"
                     invisible='1'
                 />
+                <field
+                    name="reservation_id"
+                    attrs="{'invisible': [('pms_property_id', '=', False)]}"
+                    options="{'no_create': True}"
+                />
             </xpath>
             <xpath expr="//field[@name='tag_ids']" position="attributes">
                 <attribute name="options">
@@ -264,6 +269,7 @@
                 </attribute>
             </xpath>
             <xpath expr="//field[@name='team_id']" position="before">
+                <field name="reservation_id" optional="hide" />
                 <field name="location_type" optional="hide" />
                 <field name="is_room" optional="hide" />
                 <field name="is_room_blocked" optional="hide" />
@@ -320,6 +326,7 @@
             <xpath expr="//field[@name='team_id']" position="after">
                 <field name="is_room_blocked" />
                 <field name="is_room" />
+                <field name="reservation_id" />
                 <field name="company_external_id" />
                 <field name="location_type" />
             </xpath>
@@ -343,6 +350,11 @@
                     string="Location type"
                     name="group_location_type"
                     context="{'group_by': 'location_type'}"
+                />
+                <filter
+                    string="Reservation Number"
+                    name="group_reservation_id"
+                    context="{'group_by': 'reservation_id'}"
                 />
                 <filter
                     string="Repair External ID"
@@ -371,6 +383,11 @@
                     string="Room's ticket"
                     name="filter_is_room"
                     domain="[('is_room','!=', False)]"
+                />
+                <filter
+                    string="Reservation Number"
+                    name="filter_reservation_id"
+                    domain="[('reservation_id','!=', False)]"
                 />
                 <filter
                     string="Bathroom's room"

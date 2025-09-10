@@ -35,7 +35,16 @@ class HelpdeskFormController(http.Controller):
         team_ids = (
             request.env["helpdesk.team"]
             .sudo()
-            .search([("privacy_visibility", "in", visibility_filter)])
+            .search(
+                [
+                    ("privacy_visibility", "in", visibility_filter),
+                    ("is_pms_form", "=", True),
+                ]
+            )
+        )
+
+        is_location_required_ids = (
+            True if team_ids.filtered(lambda t: t.is_location_required) else False
         )
 
         ticket_type_ids = (
@@ -43,12 +52,20 @@ class HelpdeskFormController(http.Controller):
             .sudo()
             .search([("team_id", "in", team_ids.ids)])
         )
+
         is_overnight_room = (
             request.env["pms.room.type"]
             .sudo()
             .search([("overnight_room", "=", True)])
             .ids
         )
+
+        reservation_ids = (
+            request.env["pms.reservation"]
+            .sudo()
+            .search([("pms_property_id", "=", pms_property_ids.id)])
+        )
+
         room_ids = (
             request.env["pms.room"]
             .sudo()
@@ -77,11 +94,13 @@ class HelpdeskFormController(http.Controller):
                 "portal_user_id": user_id.id,
                 "user_name": user_id.name,
                 "team_ids": team_ids,
+                "is_location_required": is_location_required_ids,
                 "ticket_type_ids": ticket_type_ids,
                 "partner_name": partner_id.company_name if partner_id else "",
                 "partner_id": partner_id.id if partner_id else None,
                 "property_id": pms_property_ids.id,
                 "property_name": pms_property_ids.name,
+                "reservation_ids": reservation_ids if reservation_ids else None,
                 "room_ids": room_ids,
                 "is_room": False,
                 "location_type_options": location_type_options,
@@ -109,6 +128,11 @@ class HelpdeskFormController(http.Controller):
         pms_property_id = int(pms_property) if pms_property else False
         date = datetime.now()
         is_room_operated_normaly = True
+        reservation_id = post.get("reservation_id", "")
+        if reservation_id:
+            reservation_data = reservation_id
+        else:
+            reservation_data = []
 
         if pms_room_id:
             room = request.env["pms.room"].browse(pms_room_id)
@@ -151,6 +175,7 @@ class HelpdeskFormController(http.Controller):
                     "team_id": int(post.get("team_id")),
                     "ticket_type_id": ticket_type_id,
                     "location_type": post.get("location_type"),
+                    "reservation_id": reservation_data if reservation_data else False,
                     "pms_room_id": pms_room_id,
                     "company_external_id": post.get("company_external_id"),
                     "description": post.get("description"),

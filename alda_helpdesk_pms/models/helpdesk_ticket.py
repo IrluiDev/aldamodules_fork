@@ -177,6 +177,13 @@ class HelpdeskTicket(models.Model):
         "blocking rate or occupancy trends.",
     )
 
+    reservation_id = fields.Many2one(
+        comodel_name="pms.reservation",
+        string="Reservation",
+        domain="[('pms_property_id', '=', pms_property_id)]",
+        help="Links the ticket to a specific reservation.",
+    )
+
     @api.onchange("is_room", "is_bathroom")
     def _onchange_is_room(self):
         if self.is_room or self.is_bathroom:

@@ -66,5 +66,43 @@ odoo.define("alda_helpdesk_pms.ticket_form", function () {
             teamSelect.addEventListener("change", filterTicketTypes);
             filterTicketTypes();
         }
+
+        // Manejar location field y reservation field basado en el team
+        const locationFieldContainer = document.getElementById("location_field");
+        const reservationFieldContainer = document.getElementById("reservation_field");
+
+        if (teamSelect && (locationFieldContainer || reservationFieldContainer)) {
+            const handleTeamChange = function () {
+                const selectedOption = teamSelect.options[teamSelect.selectedIndex];
+                const requiresLocation =
+                    selectedOption &&
+                    selectedOption.dataset.requiresLocation === "True";
+
+                // Mostrar/ocultar location field
+                if (locationFieldContainer) {
+                    if (requiresLocation) {
+                        locationFieldContainer.style.display = "block";
+                        locationSelect.required = true;
+                    } else {
+                        locationFieldContainer.style.display = "none";
+                        locationSelect.required = false;
+                        locationSelect.value = "";
+                    }
+                }
+
+                // Mostrar/ocultar reservation field (opuesto a location)
+                if (reservationFieldContainer) {
+                    if (requiresLocation) {
+                        reservationFieldContainer.style.display = "none";
+                    } else {
+                        reservationFieldContainer.style.display = "block";
+                    }
+                }
+            };
+
+            teamSelect.addEventListener("change", handleTeamChange);
+            // Verificar estado inicial
+            handleTeamChange();
+        }
     });
 });

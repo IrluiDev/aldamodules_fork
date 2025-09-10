@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-09 07:30+0000\n"
-"PO-Revision-Date: 2025-09-09 07:30+0000\n"
+"POT-Creation-Date: 2025-09-10 08:56+0000\n"
+"PO-Revision-Date: 2025-09-10 08:56+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -95,6 +95,11 @@ msgstr "<i class=\"fa fa-sun-o text-warning me-1\" title=\"Temporada Alta\"/>"
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
 msgid "<option value=\"\">Select Place</option>"
 msgstr "<option value=\"\">Seleccionar lugar</option>"
+
+#. module: alda_helpdesk_pms
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
+msgid "<option value=\"\">Select Reservation</option>"
+msgstr ""
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
@@ -228,6 +233,7 @@ msgstr "Ratio de Bloqueo"
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_ticket__is_room_blocked
+#: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_ticket_report_analysis__is_room_blocked
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.pms_helpdesk_ticket_search_inherit
 msgid "Blocked"
 msgstr "Habitación del PMS bloqueada"
@@ -312,6 +318,11 @@ msgstr "Color asociado al tipo de ticket."
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.confirmation_ticket
 msgid "Company Logo"
 msgstr ""
+
+#. module: alda_helpdesk_pms
+#: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_ticket_report_analysis__blocked_room_count
+msgid "Count Rooms Blocked"
+msgstr "Total de Habitaciones Bloqueadas"
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__total_days_blocked
@@ -472,6 +483,11 @@ msgid "Helpdesk PMS Ticket Details"
 msgstr "Detalles del PMS en el ticket de servicio de asistencia"
 
 #. module: alda_helpdesk_pms
+#: model:ir.model,name:alda_helpdesk_pms.model_helpdesk_team
+msgid "Helpdesk Team"
+msgstr "Equipo de servicio de asistencia"
+
+#. module: alda_helpdesk_pms
 #: model:ir.model,name:alda_helpdesk_pms.model_helpdesk_ticket
 msgid "Helpdesk Ticket"
 msgstr "Ticket de asistencia"
@@ -540,6 +556,11 @@ msgid "ID"
 msgstr ""
 
 #. module: alda_helpdesk_pms
+#: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_team__is_location_required
+msgid "Indicates if location will be required in the form."
+msgstr ""
+
+#. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__is_property_operated_normaly
 msgid "Indicates if the property have a emergency or not"
 msgstr "Indica si la incidencia afecta las operaciones del Hotel"
@@ -553,6 +574,11 @@ msgstr "Indica si la habitación está bloqueada por este ticket."
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__is_room_operated_normaly
 msgid "Indicates if the room is unblocked or not"
 msgstr "Indica si es una incidencia en habitación no bloqueada"
+
+#. module: alda_helpdesk_pms
+#: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_team__is_pms_form
+msgid "Indicates if the team will use the PMS-Roomdoo form."
+msgstr "Equipo se lista en formulario PMS-Roomdoo."
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__company_external_id
@@ -654,9 +680,27 @@ msgid "Last Updated on"
 msgstr "Última actualización en"
 
 #. module: alda_helpdesk_pms
+#: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__reservation_id
+msgid "Links the ticket to a specific reservation."
+msgstr "Reserva específica referida en el ticket."
+
+#. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
 msgid "Location"
 msgstr "Ubicación"
+
+#. module: alda_helpdesk_pms
+#. odoo-python
+#: code:addons/alda_helpdesk_pms/models/helpdesk.py:0
+#, python-format
+msgid "Location Required can only be enabled if PMS Form is also enabled."
+msgstr "El lugar dentro del hotel es requerido para este equipo en el formulario de ticket."
+
+#. module: alda_helpdesk_pms
+#: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_team__is_location_required
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.helpdesk_team_pms_view_form
+msgid "Location Required in form"
+msgstr "Lugar requerido en el formulario web PMS-Roomdoo"
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.pms_helpdesk_ticket_search_inherit
@@ -779,7 +823,6 @@ msgstr "Nombre de la Regla"
 #: model:ir.model.fields.selection,name:alda_helpdesk_pms.selection__helpdesk_ticket_priority_rule__is_room_blocked__0
 #: model:ir.model.fields.selection,name:alda_helpdesk_pms.selection__helpdesk_ticket_priority_rule__is_room_operated_normaly__0
 #: model:ir.model.fields.selection,name:alda_helpdesk_pms.selection__helpdesk_ticket_priority_rule__is_room_related__0
-#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
 msgid "No"
 msgstr ""
 
@@ -847,8 +890,8 @@ msgid "PMS"
 msgstr "Gestión de hotel"
 
 #. module: alda_helpdesk_pms
-#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.view_helpdesk_priority_rule_graph
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.pms_helpdesk_ticket_search_inherit
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.view_helpdesk_priority_rule_graph
 msgid "Priority Estimated"
 msgstr "Prioridad Estimada"
 
@@ -884,6 +927,11 @@ msgid "Priority rule that was applied to this ticket"
 msgstr "Regla de Prioridad que ha sido aplicada en este ticket"
 
 #. module: alda_helpdesk_pms
+#: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_ticket_report_analysis__pms_property_id
+msgid "Property"
+msgstr ""
+
+#. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.view_helpdesk_priority_rule_search
 msgid "Property Managed by PMS"
 msgstr "Gestión de Hotel PMS"
@@ -897,6 +945,11 @@ msgstr "El Hotel opera con normalidad"
 #: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__is_property_operated_normaly
 msgid "Property Operating Normally?"
 msgstr "¿Opera con normalidad el Hotel?"
+
+#. module: alda_helpdesk_pms
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.helpdesk_analysis_view_pms_ticket
+msgid "Property PMS"
+msgstr ""
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.view_helpdesk_priority_rule_tree
@@ -960,15 +1013,34 @@ msgstr ""
 "o no disponibles para reserva."
 
 #. module: alda_helpdesk_pms
+#: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_ticket__reservation_id
+msgid "Reservation"
+msgstr "Reserva"
+
+#. module: alda_helpdesk_pms
+#: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_ticket_report_analysis__reservation_id
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.pms_helpdesk_ticket_search_inherit
+msgid "Reservation Number"
+msgstr "Número de Reserva"
+
+#. module: alda_helpdesk_pms
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.helpdesk_analysis_view_pms_ticket
+msgid "Reservation Number PMS"
+msgstr "Número de reserva PMX"
+
+#. module: alda_helpdesk_pms
 #. odoo-python
 #: code:addons/alda_helpdesk_pms/models/helpdesk_ticket.py:0
 #: code:addons/alda_helpdesk_pms/models/helpdesk_ticket.py:0
+#: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_ticket_report_analysis__pms_room_id
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
 #, python-format
 msgid "Room"
 msgstr "Habitación"
 
 #. module: alda_helpdesk_pms
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.helpdesk_analysis_view_pms_ticket
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.pms_helpdesk_ticket_search_inherit
 msgid "Room Blocked"
 msgstr "Habitación bloqueada"
@@ -987,6 +1059,11 @@ msgstr "La habitación opera con normalidad / venta"
 #: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_ticket_priority_rule__is_room_operated_normaly
 msgid "Room Operating Normally?"
 msgstr "¿La habitación opera con normalidad / venta?"
+
+#. module: alda_helpdesk_pms
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.helpdesk_analysis_view_pms_ticket
+msgid "Room PMS"
+msgstr "Habitación PMS"
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.view_helpdesk_priority_rule_search
@@ -1020,6 +1097,11 @@ msgid "Room operated normaly"
 msgstr "La habitación opera con normalidad"
 
 #. module: alda_helpdesk_pms
+#: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_ticket_report_analysis__blocked_room_status_label
+msgid "Room state"
+msgstr "Estado de la habitación"
+
+#. module: alda_helpdesk_pms
 #. odoo-python
 #: code:addons/alda_helpdesk_pms/models/helpdesk_ticket.py:0
 #, python-format
@@ -1031,6 +1113,11 @@ msgstr "Estatus de la habitación actualizada"
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.pms_helpdesk_ticket_search_inherit
 msgid "Room's ticket"
 msgstr "Es habitación"
+
+#. module: alda_helpdesk_pms
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.helpdesk_analysis_view_pms_ticket
+msgid "Rooms Blocked"
+msgstr "Habitaciones Bloqueadas"
 
 #. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.view_helpdesk_priority_rule_tree
@@ -1072,6 +1159,12 @@ msgstr "Enviar ticket"
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.helpdesk_ticket_type_view_form
 msgid "Show KPIs"
 msgstr "Mostrar KPIs"
+
+#. module: alda_helpdesk_pms
+#: model:ir.model.fields,field_description:alda_helpdesk_pms.field_helpdesk_team__is_pms_form
+#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.helpdesk_team_pms_view_form
+msgid "Show team in PMS-Romdoo form"
+msgstr "Equipos para formulario PMS-Roomdoo"
 
 #. module: alda_helpdesk_pms
 #: model:ir.model.fields,help:alda_helpdesk_pms.field_helpdesk_ticket__occupancy_rate
@@ -1177,6 +1270,11 @@ msgid "Ticket #"
 msgstr ""
 
 #. module: alda_helpdesk_pms
+#: model:ir.model,name:alda_helpdesk_pms.model_helpdesk_ticket_report_analysis
+msgid "Ticket Analysis"
+msgstr "Análisis de tickets"
+
+#. module: alda_helpdesk_pms
 #: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
 msgid "Ticket Type"
 msgstr "Tipo de ticket"
@@ -1265,7 +1363,6 @@ msgstr "Ver mis tickets"
 #: model:ir.model.fields.selection,name:alda_helpdesk_pms.selection__helpdesk_ticket_priority_rule__is_room_blocked__30
 #: model:ir.model.fields.selection,name:alda_helpdesk_pms.selection__helpdesk_ticket_priority_rule__is_room_operated_normaly__20
 #: model:ir.model.fields.selection,name:alda_helpdesk_pms.selection__helpdesk_ticket_priority_rule__is_room_related__20
-#: model_terms:ir.ui.view,arch_db:alda_helpdesk_pms.create_ticket_form
 msgid "Yes"
 msgstr "Sí"
 
