@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_helpdesk_priority_rule_tree" model="ir.ui.view">
+        <field name="name">helpdesk.priority.rule.tree</field>
+        <field name="model">helpdesk.ticket.priority.rule</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <tree
+                default_order="priority_estimated desc"
+                decoration-danger="priority_estimated == '3'"
+                decoration-success="priority_estimated == '0'"
+            >
+                <field
+                    name="priority_estimated"
+                    string="Priority Level"
+                    widget="priority"
+                />
+                <field name="type_rule" string="Rule Type" widget="selection" />
+                <field name="rule_name" string="Rule Name" width="200" />
+                <field name="season" string="Season" />
+                <field name="block_category" string="Block Level" />
+                <field name="occupancy_category" string="Occupancy" />
+                <field name="is_room_operated_normaly" string="Room operated normaly" />
+                <field
+                    name="is_property_operated_normaly"
+                    string="Property operated normaly"
+                />
+                <field
+                    name="priority_suggestion_action"
+                    string="priority_suggestion_action"
+                    optional="show"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_helpdesk_priority_rule_form" model="ir.ui.view">
+        <field name="name">helpdesk.priority.rule.form</field>
+        <field name="model">helpdesk.ticket.priority.rule</field>
+        <field name="arch" type="xml">
+            <form string="Priority Rule">
+                <sheet>
+                    <group>
+                        <field name="rule_name" readonly="1" invisible="1" />
+                        <field
+                            name="type_rule"
+                            string="📌 Rule Clase"
+                            widget="radio"
+                            options="{'horizontal': True}"
+                            class="btn-group-toggle d-flex gap-2 bg-light p-2 rounded border mt-2"
+                        />
+                    </group>
+                    <notebook attrs="{'invisible': [('type_rule', '=', False)]}">
+                        <page string="🏨 Hotel Related">
+                            <group>
+                                <field name="is_pms_property" invisible="1" />
+                                <field name="season" />
+                                <field
+                                    name="is_property_operated_normaly"
+                                    attrs="{'invisible': [('type_rule', '!=', 'no_room')]}"
+                                />
+                                <field name="occupancy_rate" />
+                                <field name="block_rate" />
+                                <field name="is_room_related" invisible='1' />
+                            </group>
+                        </page>
+                        <page
+                            string="🛏️ Room Related"
+                            attrs="{'invisible': ['|', ('type_rule', 'in', ['no_room','blocked_room']),('is_room_related', '=', False)]}"
+                        >
+                            <group>
+                                <field
+                                    name="is_room_operated_normaly"
+                                    attrs="{'invisible': ['|', ('type_rule', '==', 'no_room'),('is_room_related', '=', False)]}"
+                                    readonly="1"
+                                />
+                            </group>
+                        </page>
+                        <page
+                            string="🔐 Blocked Room"
+                            attrs="{'invisible': ['|', ('type_rule', 'in', ['no_room','unblocked']),('is_room_related', '=', False)]}"
+                        >
+                            <group>
+                                <field name="is_room_blocked" invisible='1' />
+                                <field name="days_blocked" />
+                                <field
+                                    name="is_room_operated_normaly"
+                                    attrs="{'readonly': [('type_rule', '=', 'blocked_room')]}"
+                                />
+                            </group>
+                        </page>
+                    </notebook>
+                    <group
+                        string="🎯 Priority Suggestion"
+                        class="bg-light p-3 border rounded-lg mt-4 o_group_o2m p-3"
+                    >
+                        <field name="priority_estimated" widget="priority" />
+                        <field name="priority_suggestion_action" widget="html" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_helpdesk_ticket_priority_rule_kanban" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.priority.rule.kanban</field>
+        <field name="model">helpdesk.ticket.priority.rule</field>
+        <field name="arch" type="xml">
+            <kanban
+                default_group_by="type_rule"
+                class="o_kanban_dashboard o_kanban_accounting"
+            >
+                <field name="rule_name" />
+                <field name="priority_estimated" />
+                <field name="type_rule" />
+                <field name="occupancy_rate" />
+                <field name="block_rate" />
+                <field name="priority_suggestion_action" />
+                <field name="block_category" />
+                <field name="occupancy_category" />
+                <field name="season" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div
+                            class="oe_kanban_global_click o_kanban_card o_kanban_card_accounting"
+                        >
+                            <t t-set="type_class">
+                                <t
+                                    t-if="record.type_rule.raw_value == 'blocked_room'"
+                                >bg-danger</t>
+                                <t
+                                    t-elif="record.type_rule.raw_value == 'unblocked'"
+                                >bg-warning text-dark</t>
+                                <t t-else="">bg-info</t>
+                            </t>
+                            <div
+                                t-attf-class="o_kanban_card_header_title mb-1 p-2 text-white d-flex justify-content-between align-items-center rounded-top {{ type_class }}"
+                            >
+                                <i class="fa fa-map-signs text-white me-1" />
+                                <strong><t t-esc="record.type_rule.value" /></strong>
+                                <field name="priority_estimated" widget="priority" />
+                            </div>
+                            <div class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title text-center">
+                                    <div class="o_primary">
+                                        <field name="display_name" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pt-5">
+                                <div class="col center">
+                                    <span class="fw-bold">
+                                        <center>
+                                            <small>
+                                                <i
+                                                    class="fa fa-line-chart text-success me-1"
+                                                /><br />
+                                                <t t-if="record.occupancy_category">
+                                                    <t
+                                                        t-esc="record.occupancy_category.value"
+                                                    />
+                                                </t>
+                                                <br />
+                                                <t t-if="record.occupancy_rate">
+                                                    <t
+                                                        t-esc="record.occupancy_rate.value"
+                                                    />
+                                                </t>
+                                                <br />
+                                            </small>
+                                        </center>
+                                    </span>
+                                </div>
+                                <div class="col border-start">
+                                    <span class="fw-bold">
+                                    <center><small><i
+                                                    class="fa fa-ban text-danger me-1"
+                                                /></small></center>
+                                        <center>
+                                            <t t-if="record.block_category">
+                                                <t
+                                                    t-esc="record.block_category.value"
+                                                />
+                                            </t>
+                                        </center>
+                                        <center>
+                                            <small>
+                                            <t t-if="record.block_rate">
+                                                <t t-esc="record.block_rate.value" />
+                                            </t>
+                                            </small>
+                                        </center>
+                                    </span>
+
+                                </div>
+                                <div class="col border-start">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <span class="fw-bold">
+                                            <center>
+                                                <small>
+                                                    <t
+                                                        t-if="record.season.raw_value == '20'"
+                                                    >
+                                                        <i
+                                                            class="fa fa-sun-o text-warning me-1"
+                                                            title="High Season"
+                                                        />
+                                                    </t>
+                                                    <t
+                                                        t-elif="record.season.raw_value == '5'"
+                                                    >
+                                                        <i
+                                                            class="fa fa-moon-o text-info me-1"
+                                                            title="Low Season"
+                                                        />
+                                                    </t>
+                                                </small>
+                                            </center>
+                                            <t t-if="record.season.raw_value">
+                                                <t t-esc="record.season.value" />
+                                            </t>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Vista Pivot -->
+    <record id="view_helpdesk_priority_rule_pivot" model="ir.ui.view">
+        <field name="name">helpdesk.priority.rule.pivot</field>
+        <field name="model">helpdesk.ticket.priority.rule</field>
+        <field name="arch" type="xml">
+            <pivot string="Priority Rules Analysis" disable_linking="True">
+                <field name="type_rule" type="col" />
+                <field name="block_category" type="col" />
+                <field name="occupancy_category" type="col" />
+                <field name="season" type="row" />
+                <field name="is_room_operated_normaly" type="row" />
+                <field name="is_property_operated_normaly" type="row" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_helpdesk_rule_type_pie" model="ir.ui.view">
+        <field name="name">helpdesk.rule.type.pie</field>
+        <field name="model">helpdesk.ticket.priority.rule</field>
+        <field name="arch" type="xml">
+            <graph string="Rule Type Distribution" type="pie">
+                <field name="type_rule" type="row" />
+                <field name="id" type="measure" operator="count" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_helpdesk_priority_rule_graph" model="ir.ui.view">
+        <field name="name">helpdesk.priority.rule.graph</field>
+        <field name="model">helpdesk.ticket.priority.rule</field>
+        <field name="arch" type="xml">
+            <graph
+                string="Distribución de Reglas por Prioridad"
+                type="bar"
+                stacked="True"
+            >
+                <field name="type_rule" type="row" string="Tipo de Regla" />
+                <field
+                    name="priority_estimated"
+                    type="stacked"
+                    string="Prioridad Estimada"
+                />
+            </graph>
+        </field>
+    </record>
+
+
+    <record id="view_helpdesk_priority_rule_search" model="ir.ui.view">
+        <field name="name">helpdesk.priority.rule.search</field>
+        <field name="model">helpdesk.ticket.priority.rule</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="rule_name" string="Type" />
+
+                <filter
+                    string="High Season"
+                    name="high_season"
+                    domain="[('season','=','20')]"
+                />
+                <filter
+                    string="Low Season"
+                    name="low_season"
+                    domain="[('season','=','5')]"
+                />
+
+                <filter
+                    string="Not Room Rules"
+                    name="no_room"
+                    domain="[('type_rule','=','no_room')]"
+                />
+                <filter
+                    string="Unblocked Room Rules"
+                    name="unblocked"
+                    domain="[('type_rule','=','unblocked')]"
+                />
+                <filter
+                    string="Blocked Room Rules"
+                    name="blocked_room"
+                    domain="[('type_rule','=','blocked_room')]"
+                />
+
+                <filter
+                    string="Low Blocked"
+                    name="low_blocked"
+                    domain="[('block_category','=','low')]"
+                />
+                <filter
+                    string="Medium Blocked"
+                    name="medium_blocked"
+                    domain="[('block_category','=','medium')]"
+                />
+                <filter
+                    string="High Blocked"
+                    name="high_blocked"
+                    domain="[('block_category','=','high')]"
+                />
+
+                <filter
+                    string="Low Occupancy"
+                    name="low_occupancy"
+                    domain="[('occupancy_category','=','low')]"
+                />
+                <filter
+                    string="Medium Occupancy"
+                    name="medium_occupancy"
+                    domain="[('occupancy_category','=','medium')]"
+                />
+                <filter
+                    string="High Occupancy"
+                    name="high_occupancy"
+                    domain="[('occupancy_category','=','high')]"
+                />
+
+                <separator />
+                <filter
+                    string="Group by Season"
+                    name="group_by_season"
+                    context="{'group_by': 'season'}"
+                />
+                <filter
+                    string="Group by Type"
+                    name="group_by_type_rule"
+                    context="{'group_by': 'type_rule'}"
+                />
+                <filter
+                    string="Group by Block Category"
+                    name="group_by_block_category"
+                    context="{'group_by': 'block_category'}"
+                />
+                <filter
+                    string="Group by Occupancy Category"
+                    name="group_by_occupancy_category"
+                    context="{'group_by': 'occupancy_category'}"
+                />
+                <filter
+                    string="Group by Priority Estimated"
+                    name="group_by_priority_estimated"
+                    context="{'group_by': 'priority_estimated'}"
+                />
+
+                <group expand="0" string="Advanced">
+                    <filter
+                        string="Urgent Priority"
+                        name="urgent_priority"
+                        domain="[('priority_estimated','=','3')]"
+                    />
+                    <filter
+                        string="High Priority"
+                        name="high_priority"
+                        domain="[('priority_estimated','=','2')]"
+                    />
+                    <filter
+                        string="Medium Priority"
+                        name="medium_priority"
+                        domain="[('priority_estimated','=','1')]"
+                    />
+                    <filter
+                        string="Low Priority"
+                        name="medium_priority"
+                        domain="[('priority_estimated','=','0')]"
+                    />
+                    <filter
+                        string="Room Related"
+                        name="room_related"
+                        domain="[('is_room_related','=','20')]"
+                    />
+                    <filter
+                        string="Property Managed by PMS"
+                        name="pms_property"
+                        domain="[('is_pms_property','=','30')]"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+</odoo>
