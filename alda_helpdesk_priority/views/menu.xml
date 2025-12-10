@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_helpdesk_priority_rule" model="ir.actions.act_window">
+        <field name="name">Priority Rules</field>
+        <field name="res_model">helpdesk.ticket.priority.rule</field>
+        <field name="view_mode">kanban,tree,form,pivot,graph</field>
+        <field name="context">
+            {
+                'create_button': True,
+                'search_default_group_by_type_rule': 1,
+            }
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create rules to automatically assign priority to helpdesk tickets.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_priority"
+        name="Priority Management"
+        parent="helpdesk.menu_helpdesk_root"
+        sequence="99"
+        groups="base.group_user"
+    />
+
+    <menuitem
+        id="menu_helpdesk_priority_rules"
+        name="Priority Rules"
+        parent="helpdesk.helpdesk_menu_config"
+        action="action_helpdesk_priority_rule"
+        sequence="10"
+    />
+</odoo>

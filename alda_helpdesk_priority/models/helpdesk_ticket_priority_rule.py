@@ -81,13 +81,13 @@ class HelpdeskPriorityRule(models.Model):
 
     days_blocked = fields.Selection(
         [
-            # ("0", "0 days"),
+            ("0", "0 days"),
             ("300", "1 to 15 days"),
             ("400", "16 to 30 days"),
             ("500", "More than 30 days"),
         ],
         string="Days Room Blocked",
-        default="300",
+        default="0",
         required=True,
         help="Specifies the duration for which the room has been,"
         " blocked: 1-15 days, 16-30 days, or more than 30 days.",

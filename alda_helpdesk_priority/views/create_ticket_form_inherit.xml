@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        inherit_id="alda_helpdesk_pms.create_ticket_form"
+        id="priority_wrap_inherit"
+    >
+        <xpath
+            expr="//form//div[contains(@class, 'mb-3')][.//input[@name='priority']]"
+            position="attributes"
+        >
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+        <xpath
+            expr="//form//div[contains(@class, 'mb-3')][.//input[@name='priority']]"
+            position="inside"
+        >
+            <div class="mb-1 bg-warning" id="priority_field">
+                <label class="form-label">Priority</label>
+                <div class="priority-widget">
+                    <input
+                        type="hidden"
+                        name="priority"
+                        id="priority_value"
+                        value="0"
+                    />
+                    <div class="star-rating" data-priority="0">
+                        <span class="star" data-value="1">&#9734;</span>
+                        <span class="star" data-value="2">&#9734;</span>
+                        <span class="star" data-value="3">&#9734;</span>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_helpdesk_ticket_form_priority_banner" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.form.priority.banner</field>
+        <field name="model">helpdesk.ticket</field>
+        <field
+            name="inherit_id"
+            ref="alda_helpdesk_pms.helpdesk_ticket_type_view_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <field name="priority_rule_id" invisible="1" />
+                <field name="priority_suggestion_action" invisible="1" />
+                <div
+                    class="alert alert-info"
+                    attrs="{'invisible': ['|', ('priority_rule_id','=',False), ('priority_suggestion_action','=',False)]}"
+                >
+                    A priority has been assigned automatically, and a suggested action is available.
+                </div>
+            </xpath>
+
+            <xpath expr="//sheet" position="inside">
+                <div
+                    attrs="{'invisible': ['|', ('priority_rule_id','=',False), ('priority_suggestion_action','=',False)]}"
+                    style="margin-bottom: 20px;"
+                >
+
+                    <h3 style="font-weight:bold; margin-bottom: 8px;">
+                        Suggestion derived from the assigned priority
+                    </h3>
+
+                    <details
+                        style="border: 1px solid #ccc; border-radius: 6px; overflow: hidden;"
+                    >
+                        <summary
+                            style="
+                            cursor: pointer;
+                            font-weight: bold;
+                            padding: 10px 12px;
+                            background: #f9f9f9;
+                            border-bottom: 1px solid #ccc;
+                            list-style: none;
+                        "
+                        >
+                            Show suggestion
+                        </summary>
+
+                        <div style="padding: 12px; background: #fff;">
+                            <field
+                                name="priority_suggestion_action"
+                                widget="html"
+                                readonly="1"
+                            />
+                        </div>
+                    </details>
+
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

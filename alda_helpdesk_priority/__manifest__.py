@@ -36,13 +36,16 @@
     ],
     "category": "HELPDESK",
     "data": [
+        "security/ir.model.access.csv",
         "views/helpdesk_ticket_priority_rule_views.xml",
+        "views/create_ticket_form_inherit.xml",
+        "views/helpdesk_ticket_views.xml",
+        "views/menu.xml",
     ],
     "assets": {
-        # "web.assets_frontend": [
-        #     "alda_helpdesk_pms/static/src/js/ticket_form.js",
-        #     "alda_helpdesk_pms/static/src/css/ticket_form.css",
-        # ],
+        "web.assets_frontend": [
+            "alda_helpdesk_priority/static/src/js/ticket_form.js",
+        ],
     },
     "installable": True,
     "application": True,
